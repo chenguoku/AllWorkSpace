@@ -1,0 +1,71 @@
+#management:
+#  security:
+#    enabled: false
+#
+##security:
+##  user:
+##    name: user
+##    password: pwd
+#spring:
+#  metrics:
+#    servo:
+#      enabled: false #去掉重复的metrics，不然在prometheus的控制台的targets页签里，会一直显示此endpoint为down状态。  ]
+#应用可视化监控
+
+
+#spring:
+#  metrics:
+#    servo:
+#      enabled: false
+
+
+
+#    metrics:
+#      binders:
+#        jvm:
+#          enabled: false
+#        files:
+#          enabled: false
+#        integration:
+#          enabled: false
+#        logback:
+#          enabled: false
+#        processor:
+#          enabled: false
+#        uptime:
+#          enabled: false
+#      endpoints:
+#        web:
+#          exposure:
+#            include: ["prometheus"]
+#          base-path: "/"
+
+
+
+#  endpoints:
+#    web:
+#    exposure:
+#      include: health,info,env,metrics,prometheus
+management:
+  security:
+    enabled: false
+endpoints:
+  enabled: false
+  prometheus:
+    enabled: true
+  metrics:
+    enabled: true
+#      binders:
+#        jvm:
+#          enabled: false
+#        files:
+#          enabled: false
+#        integration:
+#          enabled: false
+#        logback:
+#          enabled: false
+#        processor:
+#          enabled: false
+#        uptime:
+#          enabled: false
+
