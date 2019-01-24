@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hh-archetype/hh-archetype.iml" filepath="$PROJECT_DIR$/hh-archetype/hh-archetype.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/maven-archetype.iml" filepath="$PROJECT_DIR$/.idea/maven-archetype.iml" />
+    </modules>
+  </component>
+</project>
