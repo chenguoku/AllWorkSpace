@@ -1,0 +1,41 @@
+
+\squid:S1192<"FDefine a constant instead of duplicating this literal "three" 7 times.(úç‰L
+N
+squid:S106"9Replace this use of System.out or System.err by a logger.(ƒÚáB
+O
+squid:S106""9Replace this use of System.out or System.err by a logger.(ºŒ´
+O
+squid:S106-"9Replace this use of System.out or System.err by a logger.(ºŒ´
+O
+squid:S1065"9Replace this use of System.out or System.err by a logger.(ºŒ´
+O
+squid:S106?"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
+N
+squid:S106I"9Replace this use of System.out or System.err by a logger.(öôöN
+O
+squid:S106T"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
+N
+squid:S106c"9Replace this use of System.out or System.err by a logger.(«ÿÆ~
+N
+squid:S106p"9Replace this use of System.out or System.err by a logger.(«ÿÆ~
+O
+squid:S106}"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
+P
+squid:S106Œ"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
+P
+squid:S106›"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
+Hsquid:S1135"2Complete the task associated to this TODO comment.(‰ŞƒH
+jsquid:S1602"SRemove useless curly braces around statement and then remove useless return keyword(Ú›ú…
+jsquid:S16022"SRemove useless curly braces around statement and then remove useless return keyword(‰ãÓé
+Hsquid:S1602>",Remove useless curly braces around statement(¹“°ıÿÿÿÿ
+Hsquid:S1602S",Remove useless curly braces around statement(¹“°ıÿÿÿÿ
+jsquid:S1602^"SRemove useless curly braces around statement and then remove useless return keyword(ùÈò“
+Hsquid:S1602b",Remove useless curly braces around statement(¹“°ıÿÿÿÿ
+Hsquid:S1602o",Remove useless curly braces around statement(¹“°ıÿÿÿÿ
+jsquid:S1602y"SRemove useless curly braces around statement and then remove useless return keyword(ìÓ¶
+Hsquid:S1602|",Remove useless curly braces around statement(¹“°ıÿÿÿÿ
+Isquid:S1602‹",Remove useless curly braces around statement(¹“°ıÿÿÿÿ
+Isquid:S1602š",Remove useless curly braces around statement(¹“°ıÿÿÿÿ
+Csquid:S1612"",Replace this lambda with a method reference.(ºŒ´
+Csquid:S1612-",Replace this lambda with a method reference.(ºŒ´
+Csquid:S16125",Replace this lambda with a method reference.(ºŒ´

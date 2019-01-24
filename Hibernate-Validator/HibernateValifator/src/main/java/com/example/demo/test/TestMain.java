@@ -13,9 +13,9 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import org.junit.jupiter.api.Test;
 
 import com.example.demo.entity.TestBean;
+import org.junit.Test;
 
 public class TestMain {
 

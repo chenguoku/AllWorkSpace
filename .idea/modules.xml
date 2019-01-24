@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AllWorkSpace.iml" filepath="$PROJECT_DIR$/.idea/AllWorkSpace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hibernate-Validator/HibernateValifator/demo.iml" filepath="$PROJECT_DIR$/Hibernate-Validator/HibernateValifator/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestBaseSpringboot/dome/dome.iml" filepath="$PROJECT_DIR$/TestBaseSpringboot/dome/dome.iml" />
+    </modules>
+  </component>
+</project>
