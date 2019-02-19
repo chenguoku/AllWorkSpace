@@ -1,0 +1,12 @@
+
+]
+squid:S899.";Do something with the "boolean" value returned by "delete".(é‘‚©úÿÿÿÿ8·¥òò-
+{squid:S1149;"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ÏªÎ£ÿÿÿÿÿ
+ª%squid:RedundantThrowsDeclarationCheck"mRemove the declaration of thrown exception 'java.lang.IllegalArgumentException' which is a runtime exception.(ó’Úıÿÿÿÿ8·¥òò-
+?squid:S11483"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+`squid:UselessImportCheck
+"7Remove this unused import 'javax.tools.JavaFileObject'.(£ì°ëùÿÿÿÿ
+lsquid:S4042."IUse "java.nio.Files#delete" here for better messages on error conditions.(é‘‚©úÿÿÿÿ8·¥òò-
+ksquid:S2095"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(•ºÔÈıÿÿÿÿ8·¥òò-
+bsquid:CommentedOutCodeLineR"<This block of commented-out lines of code should be removed.(æƒÖÉ
+Xsquid:S1118":Add a private constructor to hide the implicit public one.(ó„˜ê8·¥òò-

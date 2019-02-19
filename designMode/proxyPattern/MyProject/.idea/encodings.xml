@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/com/hh/proxy/custom/HHClassLoader.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/hh/proxy/custom/HHMeipo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/hh/proxy/custom/HHProxy.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/hh/proxy/jdk/Meipo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/hh/proxy/jdk/TestFindLove.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/com/hh/proxy/jdk/ZhangSan.java" charset="GBK" />
+  </component>
+</project>
