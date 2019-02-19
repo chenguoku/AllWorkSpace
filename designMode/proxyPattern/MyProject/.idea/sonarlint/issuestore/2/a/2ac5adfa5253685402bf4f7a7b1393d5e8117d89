@@ -1,0 +1,9 @@
+
+Fsquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+?squid:S1148*"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+V
+squid:S8994";Do something with the "boolean" value returned by "delete".(ßµÚúÿÿÿÿ
+hsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(§ÏŞ
+?squid:S11481"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S1148$"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+esquid:S40424"IUse "java.nio.Files#delete" here for better messages on error conditions.(ßµÚúÿÿÿÿ

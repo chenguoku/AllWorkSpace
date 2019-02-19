@@ -1,0 +1,10 @@
+
+Xsquid:UselessImportCheck"4Remove this unused import 'java.lang.reflect.Proxy'.(Ö’€≤
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(˝‚Œ∏˝ˇˇˇˇ8ìÚÒÚè-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(Óõ∆≥¯ˇˇˇˇ8ìÚÒÚè-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(∑éÁ°¸ˇˇˇˇ8ìÚÒÚè-
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(§∞Ëè8ìÚÒÚè-
+esquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(¯öÌÆ8“˝÷ıè-
