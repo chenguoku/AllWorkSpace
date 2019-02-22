@@ -1,24 +1,24 @@
 
+hsquid:CommentedOutCodeLine8"<This block of commented-out lines of code should be removed.(¿ÿÓb8õ–ÅË‡-
+nsquid:CommentedOutCodeLine="<This block of commented-out lines of code should be removed.(•®îÑüÿÿÿÿ8•ÄË‡-
+nsquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(Ö‹÷éÿÿÿÿÿ8°Œ†Ë‡-
+hsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ô–º+8ÔˆêÊ‡-
 V
-squid:S106<"9Replace this use of System.out or System.err by a logger.(²ÓÌ¡8•ÄË‡-
+squid:S1062"9Replace this use of System.out or System.err by a logger.(‚¨Ö§8èé€Ë‡-
 nsquid:CommentedOutCodeLineC"<This block of commented-out lines of code should be removed.(÷Øû­ùÿÿÿÿ8•ÙêË‡-
 hsquid:CommentedOutCodeLineK"<This block of commented-out lines of code should be removed.(¿ÿÓb8ùÚøË‡-
-hsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ô–º+8ÔˆêÊ‡-
-nsquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(Ö‹÷éÿÿÿÿÿ8°Œ†Ë‡-
+[
+squid:S106`"9Replace this use of System.out or System.err by a logger.(š—“¿ÿÿÿÿÿ8Ã‰¨Ì‡-
+Osquid:S16121",Replace this lambda with a method reference.(›¯±üÿÿÿÿ8°Œ†Ë‡-
+V
+squid:S106<"9Replace this use of System.out or System.err by a logger.(²ÓÌ¡8•ÄË‡-
+[
+squid:S106E"9Replace this use of System.out or System.err by a logger.(­¸¤Êúÿÿÿÿ8ˆåË‡-
 V
 squid:S106O"9Replace this use of System.out or System.err by a logger.(ç°³¢8ýøË‡-
 [
-squid:S106`"9Replace this use of System.out or System.err by a logger.(š—“¿ÿÿÿÿÿ8Ã‰¨Ì‡-
-[
-squid:S106E"9Replace this use of System.out or System.err by a logger.(­¸¤Êúÿÿÿÿ8ˆåË‡-
-Hsquid:S1135"2Complete the task associated to this TODO comment.(‰ÞƒH
-[
 squid:S106W"9Replace this use of System.out or System.err by a logger.(Æã•ûÿÿÿÿ8ò›ƒÌ‡-
-nsquid:CommentedOutCodeLine]"<This block of commented-out lines of code should be removed.(›’Æýÿÿÿÿ8ä¾¨Ì‡-
-V
-squid:S1062"9Replace this use of System.out or System.err by a logger.(‚¨Ö§8èé€Ë‡-
-hsquid:CommentedOutCodeLine8"<This block of commented-out lines of code should be removed.(¿ÿÓb8õ–ÅË‡-
+Hsquid:S1135"2Complete the task associated to this TODO comment.(‰ÞƒH
 T
 squid:S106!"9Replace this use of System.out or System.err by a logger.(×µ²ÿýÿÿÿÿ
-Osquid:S16121",Replace this lambda with a method reference.(›¯±üÿÿÿÿ8°Œ†Ë‡-
-nsquid:CommentedOutCodeLine="<This block of commented-out lines of code should be removed.(•®îÑüÿÿÿÿ8•ÄË‡-
+nsquid:CommentedOutCodeLine]"<This block of commented-out lines of code should be removed.(›’Æýÿÿÿÿ8ä¾¨Ì‡-
