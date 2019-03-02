@@ -181,12 +181,14 @@ final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializa
 
 			// May be null. Get as late as possible to minimize the time we "own" the target,
 			// in case it comes from a pool.
+			//获取目标类
 			target = targetSource.getTarget();
 			if (target != null) {
 				targetClass = target.getClass();
 			}
 
 			// Get the interception chain for this method.
+			//获取可以应用到此方法上的Interceptor
 			List<Object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass);
 
 			// Check whether we have any advice. If we don't, we can fallback on direct
