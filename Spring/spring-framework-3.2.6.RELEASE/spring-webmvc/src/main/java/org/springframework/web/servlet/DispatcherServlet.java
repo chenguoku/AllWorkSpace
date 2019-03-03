@@ -853,6 +853,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		request.setAttribute(FLASH_MAP_MANAGER_ATTRIBUTE, this.flashMapManager);
 
 		try {
+			//干活的方法
 			doDispatch(request, response);
 		}
 		finally {
@@ -890,7 +891,7 @@ public class DispatcherServlet extends FrameworkServlet {
 			Exception dispatchException = null;
 
 			try {
-				//1.检查是否是文件上传的请求
+				//1.解析请求，检查是否是文件上传的请求
 				processedRequest = checkMultipart(request);
 				multipartRequestParsed = processedRequest != request;
 
