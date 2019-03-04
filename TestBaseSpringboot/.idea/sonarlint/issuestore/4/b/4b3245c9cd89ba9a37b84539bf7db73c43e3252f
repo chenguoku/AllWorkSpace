@@ -1,28 +1,0 @@
-
-Hsquid:S1612",Replace this lambda with a method reference.(öŞâıÿÿÿÿ
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(öŞâıÿÿÿÿ
-Csquid:S1612C",Replace this lambda with a method reference.(º Ãö
-Csquid:S1612G",Replace this lambda with a method reference.(º Ãö
-O
-squid:S106b"9Replace this use of System.out or System.err by a logger.(º Ãö
-O
-squid:S106G"9Replace this use of System.out or System.err by a logger.(º Ãö
-Hsquid:S1612a",Replace this lambda with a method reference.(„˜™êüÿÿÿÿ
-Csquid:S1612U",Replace this lambda with a method reference.(Ä’ÙÀ
-Csquid:S1612)",Replace this lambda with a method reference.(º Ãö
-Hsquid:S1135"2Complete the task associated to this TODO comment.(‰ŞƒH
-O
-squid:S106D"9Replace this use of System.out or System.err by a logger.(”àşÎ
-jsquid:S1602S"SRemove useless curly braces around statement and then remove useless return keyword(–æÊÏ
-O
-squid:S106)"9Replace this use of System.out or System.err by a logger.(º Ãö
-O
-squid:S106U"9Replace this use of System.out or System.err by a logger.(Ä’ÙÀ
-Csquid:S16126",Replace this lambda with a method reference.(º Ãö
-O
-squid:S1066"9Replace this use of System.out or System.err by a logger.(º Ãö
-Csquid:S1612S",Replace this lambda with a method reference.(–æÊÏ
-O
-squid:S106C"9Replace this use of System.out or System.err by a logger.(º Ãö
-Csquid:S1612b",Replace this lambda with a method reference.(º Ãö
