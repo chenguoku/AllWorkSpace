@@ -1,11 +1,11 @@
-package com.hh.dome.thread;
+package com.hh.dome.concurrent;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
 /**
  * @ClassName TestCallback
- * @Descript TODO
+ * @Descript 测试callback
  * @Author chenguoku
  * @Date 2019/1/24  17:22
  * @Version 1.0
