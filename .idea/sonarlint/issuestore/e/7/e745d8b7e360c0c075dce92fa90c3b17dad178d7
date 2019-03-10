@@ -1,19 +1,0 @@
-
-¢%squid:RedundantThrowsDeclarationCheck"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(²Á€œüÿÿÿÿ
-Tsquid:S1197"8Move the array designator from the variable to the type.(²Á€œüÿÿÿÿ
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‘·­Òüÿÿÿÿ
-O
-squid:S106$"9Replace this use of System.out or System.err by a logger.(ÄÂÅ»
-O
-squid:S106'"9Replace this use of System.out or System.err by a logger.(Áß‡Ü
-O
-squid:S106."9Replace this use of System.out or System.err by a logger.(ÎÜ¨Ù
-T
-squid:S106/"9Replace this use of System.out or System.err by a logger.(²“²©üÿÿÿÿ
-N
-squid:S1062"9Replace this use of System.out or System.err by a logger.(ƒÚáB
-T
-squid:S1069"9Replace this use of System.out or System.err by a logger.(Š™Ò¾ûÿÿÿÿ
-Hsquid:S1135"2Complete the task associated to this TODO comment.(‰ÞƒH
-esquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ý‚¼»
-asquid:UselessImportCheck"8Remove this unused import 'java.io.BufferedInputStream'.(Š—€åûÿÿÿÿ

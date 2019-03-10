@@ -1,41 +1,0 @@
-
-O
-squid:S106?"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
-Isquid:S1602‹",Remove useless curly braces around statement(¹“Ž°ýÿÿÿÿ
-Hsquid:S1602|",Remove useless curly braces around statement(¹“Ž°ýÿÿÿÿ
-O
-squid:S1065"9Replace this use of System.out or System.err by a logger.(žºŒ´
-O
-squid:S106""9Replace this use of System.out or System.err by a logger.(žºŒ´
-Hsquid:S1602S",Remove useless curly braces around statement(¹“Ž°ýÿÿÿÿ
-Csquid:S1612"",Replace this lambda with a method reference.(žºŒ´
-N
-squid:S106"9Replace this use of System.out or System.err by a logger.(ƒÚáB
-Hsquid:S1602o",Remove useless curly braces around statement(¹“Ž°ýÿÿÿÿ
-P
-squid:S106Œ"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
-Csquid:S16125",Replace this lambda with a method reference.(žºŒ´
-jsquid:S1602"SRemove useless curly braces around statement and then remove useless return keyword(Ú›ú…
-Hsquid:S1602>",Remove useless curly braces around statement(¹“Ž°ýÿÿÿÿ
-O
-squid:S106}"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
-Csquid:S1612-",Replace this lambda with a method reference.(žºŒ´
-jsquid:S1602^"SRemove useless curly braces around statement and then remove useless return keyword(ùÈò“
-N
-squid:S106p"9Replace this use of System.out or System.err by a logger.(«ÿÆ~
-Hsquid:S1135"2Complete the task associated to this TODO comment.(‰ÞƒH
-N
-squid:S106c"9Replace this use of System.out or System.err by a logger.(«ÿÆ~
-O
-squid:S106-"9Replace this use of System.out or System.err by a logger.(žºŒ´
-Hsquid:S1602b",Remove useless curly braces around statement(¹“Ž°ýÿÿÿÿ
-\squid:S1192<"FDefine a constant instead of duplicating this literal "three" 7 times.(úç‰L
-jsquid:S1602y"SRemove useless curly braces around statement and then remove useless return keyword(ìÓ¶
-Isquid:S1602š",Remove useless curly braces around statement(¹“Ž°ýÿÿÿÿ
-O
-squid:S106T"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
-N
-squid:S106I"9Replace this use of System.out or System.err by a logger.(öôöN
-jsquid:S16022"SRemove useless curly braces around statement and then remove useless return keyword(‰ãÓé
-P
-squid:S106›"9Replace this use of System.out or System.err by a logger.(Û•¢Ò
