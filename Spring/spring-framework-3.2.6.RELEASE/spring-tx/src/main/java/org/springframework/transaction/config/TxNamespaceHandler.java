@@ -50,6 +50,7 @@ public class TxNamespaceHandler extends NamespaceHandlerSupport {
 	}
 
 
+//	≥ı ºªØ
 	public void init() {
 		registerBeanDefinitionParser("advice", new TxAdviceBeanDefinitionParser());
 		registerBeanDefinitionParser("annotation-driven", new AnnotationDrivenBeanDefinitionParser());
