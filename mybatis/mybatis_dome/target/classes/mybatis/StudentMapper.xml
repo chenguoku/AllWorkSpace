@@ -93,7 +93,7 @@
     <insert id="insert" parameterType="com.hh.dao.Student">
         insert into Student (SID, Sname, Sage,
         Ssex)
-        values (#{sid,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, #{sage,jdbcType=TIMESTAMP},
+        values (#{sid,jdbcType=VARCHAR,typeHandler=com.hh.typehandlers.TestTypeHandler}, #{sname,jdbcType=VARCHAR}, #{sage,jdbcType=TIMESTAMP},
         #{ssex,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="com.hh.dao.Student">

@@ -1,7 +1,9 @@
 package com.hh.config;
 
+import com.hh.typehandlers.TestTypeHandler;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.type.TypeHandler;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -37,7 +39,7 @@ public class MybatisConfig {
         sqlSessionFactoryBean.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mybatis/*.xml"));
-//        sqlSessionFactoryBean.setTypeHandlers(new TypeHandler[]{new TestTypeHandle(),new GPTypeHandler()});
+        sqlSessionFactoryBean.setTypeHandlers(new TypeHandler[]{new TestTypeHandler()});
 //        sqlSessionFactoryBean.setTypeHandlersPackage("com.gupao.dal.typehandles");
 //        sqlSessionFactoryBean.setPlugins(new Interceptor[]{new TestPlugin()});
 //        sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageInterceptor()});
