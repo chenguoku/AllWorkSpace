@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hh.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.hh.dao.Student">
+        <result column="SID" jdbcType="VARCHAR" property="sid"/>
+        <result column="Sname" jdbcType="VARCHAR" property="sname"/>
+        <result column="Sage" jdbcType="TIMESTAMP" property="sage"/>
+        <result column="Ssex" jdbcType="VARCHAR" property="ssex"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        SID, Sname, Sage, Ssex
+    </sql>
+    <select id="selectByExample" parameterType="com.hh.dao.StudentExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from Student
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <delete id="deleteByExample" parameterType="com.hh.dao.StudentExample">
+        delete from Student
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.hh.dao.Student">
+        insert into Student (SID, Sname, Sage,
+        Ssex)
+        values (#{sid,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, #{sage,jdbcType=TIMESTAMP},
+        #{ssex,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.hh.dao.Student">
+        insert into Student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                SID,
+            </if>
+            <if test="sname != null">
+                Sname,
+            </if>
+            <if test="sage != null">
+                Sage,
+            </if>
+            <if test="ssex != null">
+                Ssex,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sid != null">
+                #{sid,jdbcType=VARCHAR},
+            </if>
+            <if test="sname != null">
+                #{sname,jdbcType=VARCHAR},
+            </if>
+            <if test="sage != null">
+                #{sage,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ssex != null">
+                #{ssex,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.hh.dao.StudentExample" resultType="java.lang.Integer">
+        select count(*) from Student
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update Student
+        <set>
+            <if test="record.sid != null">
+                SID = #{record.sid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.sname != null">
+                Sname = #{record.sname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.sage != null">
+                Sage = #{record.sage,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.ssex != null">
+                Ssex = #{record.ssex,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update Student
+        set SID = #{record.sid,jdbcType=VARCHAR},
+        Sname = #{record.sname,jdbcType=VARCHAR},
+        Sage = #{record.sage,jdbcType=TIMESTAMP},
+        Ssex = #{record.ssex,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+</mapper>
