@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="F:\AllWorkSpaces\mybatis\mybatis_generator\src\main\resources\mybatis\mysql-connector-java-5.1.8.jar"/>
+
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <!--去除注释  -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--链接地址-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.190.133:3306/test"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--dao地址-->
+        <javaModelGenerator targetPackage="com.hh.dao"
+                            targetProject="F:\AllWorkSpaces\mybatis\mybatis_generator\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--xml地址-->
+        <sqlMapGenerator targetPackage="com.hh.dao"
+                         targetProject="F:\AllWorkSpaces\mybatis\mybatis_generator\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--mapper地址-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hh.mapper"
+                             targetProject="F:\AllWorkSpaces\mybatis\mybatis_generator\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--对应的表  schema 是数据库 tableName是表名 domainObjectName生成实体类的名-->
+        <table schema="test" tableName="Student" domainObjectName="Student">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+        <table schema="test" tableName="SC" domainObjectName="Sc">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
