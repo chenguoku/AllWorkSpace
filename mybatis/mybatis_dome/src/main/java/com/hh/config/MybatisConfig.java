@@ -1,6 +1,9 @@
 package com.hh.config;
 
+import com.github.pagehelper.PageInterceptor;
+import com.hh.plugins.TestPlugin;
 import com.hh.typehandlers.TestTypeHandler;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.TypeHandler;
@@ -18,6 +21,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * Created by James
@@ -38,11 +42,11 @@ public class MybatisConfig {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mybatis/*.xml"));
-        sqlSessionFactoryBean.setTypeHandlers(new TypeHandler[]{new TestTypeHandler()});
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:/mybatis/*.xml"));//扫描mapper.xml文件
+//        sqlSessionFactoryBean.setTypeHandlers(new TypeHandler[]{new TestTypeHandler()});//注册typeHandler
 //        sqlSessionFactoryBean.setTypeHandlersPackage("com.gupao.dal.typehandles");
-//        sqlSessionFactoryBean.setPlugins(new Interceptor[]{new TestPlugin()});
-//        sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageInterceptor()});
+//        sqlSessionFactoryBean.setPlugins(new Interceptor[]{new TestPlugin()});//注册plugin插件的
+        sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageInterceptor()});//注册pagehelper
         SqlSessionFactory factory = sqlSessionFactoryBean.getObject();
 //        factory.getConfiguration().setLazyLoadingEnabled(true);
 //        factory.getConfiguration().setAggressiveLazyLoading(false);
@@ -50,13 +54,17 @@ public class MybatisConfig {
         return factory;
     }
 
-//    private PageInterceptor pageInterceptor() {
-//        PageInterceptor pageInterceptor = new PageInterceptor();
-//        Properties properties = new Properties();
-//        properties.put("helperDialect", "mysql");
-//        pageInterceptor.setProperties(properties);
-//        return pageInterceptor;
-//    }
+    /**
+     * pageHelper
+     * @return
+     */
+    private PageInterceptor pageInterceptor() {
+        PageInterceptor pageInterceptor = new PageInterceptor();
+        Properties properties = new Properties();
+        properties.put("helperDialect", "mysql");
+        pageInterceptor.setProperties(properties);
+        return pageInterceptor;
+    }
 
     @Primary
     @Lazy(false)
