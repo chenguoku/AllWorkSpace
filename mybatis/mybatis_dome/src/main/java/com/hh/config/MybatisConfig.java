@@ -3,6 +3,7 @@ package com.hh.config;
 import com.github.pagehelper.PageInterceptor;
 import com.hh.plugins.TestPlugin;
 import com.hh.typehandlers.TestTypeHandler;
+import org.apache.ibatis.executor.loader.cglib.CglibProxyFactory;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
