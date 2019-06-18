@@ -49,7 +49,7 @@ public class MybatisConfig {
 //        sqlSessionFactoryBean.setPlugins(new Interceptor[]{new TestPlugin()});//注册plugin插件的
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageInterceptor()});//注册pagehelper
         SqlSessionFactory factory = sqlSessionFactoryBean.getObject();
-//        factory.getConfiguration().setLazyLoadingEnabled(true);
+//        factory.getConfiguration().setLazyLoadingEnabled(true);//懒加载
 //        factory.getConfiguration().setAggressiveLazyLoading(false);
 //        factory.getConfiguration().setProxyFactory(new CglibProxyFactory());
         return factory;

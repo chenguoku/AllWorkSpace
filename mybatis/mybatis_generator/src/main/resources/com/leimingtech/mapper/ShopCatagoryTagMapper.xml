@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leimingtech.mapper.ShopCatagoryTagMapper">
+  <resultMap id="BaseResultMap" type="com.leimingtech.entity.ShopCatagoryTag">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="TAG_ID" jdbcType="INTEGER" property="tagId" />
+    <result column="CATEGORY_ID" jdbcType="INTEGER" property="categoryId" />
+    <result column="CATEGORY_DISPLAY_FLAG" jdbcType="INTEGER" property="categoryDisplayFlag" />
+    <result column="SHOW_WEB_FLAG" jdbcType="INTEGER" property="showWebFlag" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, TAG_ID, CATEGORY_ID, CATEGORY_DISPLAY_FLAG, SHOW_WEB_FLAG
+  </sql>
+  <select id="selectByExample" parameterType="com.leimingtech.entity.ShopCatagoryTagExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SHOP_CATAGORY_TAG
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SHOP_CATAGORY_TAG
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SHOP_CATAGORY_TAG
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.leimingtech.entity.ShopCatagoryTagExample">
+    delete from SHOP_CATAGORY_TAG
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.leimingtech.entity.ShopCatagoryTag">
+    insert into SHOP_CATAGORY_TAG (ID, TAG_ID, CATEGORY_ID, 
+      CATEGORY_DISPLAY_FLAG, SHOW_WEB_FLAG)
+    values (#{id,jdbcType=VARCHAR}, #{tagId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, 
+      #{categoryDisplayFlag,jdbcType=INTEGER}, #{showWebFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leimingtech.entity.ShopCatagoryTag">
+    insert into SHOP_CATAGORY_TAG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="tagId != null">
+        TAG_ID,
+      </if>
+      <if test="categoryId != null">
+        CATEGORY_ID,
+      </if>
+      <if test="categoryDisplayFlag != null">
+        CATEGORY_DISPLAY_FLAG,
+      </if>
+      <if test="showWebFlag != null">
+        SHOW_WEB_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tagId != null">
+        #{tagId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryDisplayFlag != null">
+        #{categoryDisplayFlag,jdbcType=INTEGER},
+      </if>
+      <if test="showWebFlag != null">
+        #{showWebFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.leimingtech.entity.ShopCatagoryTagExample" resultType="java.lang.Integer">
+    select count(*) from SHOP_CATAGORY_TAG
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SHOP_CATAGORY_TAG
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tagId != null">
+        TAG_ID = #{record.tagId,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryId != null">
+        CATEGORY_ID = #{record.categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryDisplayFlag != null">
+        CATEGORY_DISPLAY_FLAG = #{record.categoryDisplayFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.showWebFlag != null">
+        SHOW_WEB_FLAG = #{record.showWebFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SHOP_CATAGORY_TAG
+    set ID = #{record.id,jdbcType=VARCHAR},
+      TAG_ID = #{record.tagId,jdbcType=INTEGER},
+      CATEGORY_ID = #{record.categoryId,jdbcType=INTEGER},
+      CATEGORY_DISPLAY_FLAG = #{record.categoryDisplayFlag,jdbcType=INTEGER},
+      SHOW_WEB_FLAG = #{record.showWebFlag,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leimingtech.entity.ShopCatagoryTag">
+    update SHOP_CATAGORY_TAG
+    <set>
+      <if test="tagId != null">
+        TAG_ID = #{tagId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        CATEGORY_ID = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryDisplayFlag != null">
+        CATEGORY_DISPLAY_FLAG = #{categoryDisplayFlag,jdbcType=INTEGER},
+      </if>
+      <if test="showWebFlag != null">
+        SHOW_WEB_FLAG = #{showWebFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leimingtech.entity.ShopCatagoryTag">
+    update SHOP_CATAGORY_TAG
+    set TAG_ID = #{tagId,jdbcType=INTEGER},
+      CATEGORY_ID = #{categoryId,jdbcType=INTEGER},
+      CATEGORY_DISPLAY_FLAG = #{categoryDisplayFlag,jdbcType=INTEGER},
+      SHOW_WEB_FLAG = #{showWebFlag,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -55,29 +55,27 @@ public class QuickSort {
 	}
 	
 	
-	public static void qsort(int[] arr,int low,int high) {
-		if (low<high) {
-			int partition = partition(arr,low,high);
-			qsort(arr,low,partition-1);
-			qsort(arr, partition+1, high);
-		}
+	public static void qsort(int[] arr,int low, int high){
+	    if (low<high){
+            int middle = getMiddle(arr,low,high);
+            qsort(arr,low,middle-1);
+            qsort(arr,middle+1,high);
+        }
+
+
 	}
-	
-	public static int partition(int[] arr,int low , int high) {
-		
-		int partition = arr[low];
-		
-		while (low<high){
-			while (low<high && arr[high] >= partition) --high;
-			arr[low] = arr[high];
-			while (low<high && arr[low] <= partition) ++low;
-			arr[high] = arr[low];
-		}
-		
-		arr[low] = partition;
-		
-		return low;
-	}
+
+	public static int getMiddle(int[] arr,int low,int high){
+	    int middle = arr[low];
+	    while (low < high){
+	        while (low<high && arr[high] >= middle) --high;
+	        arr[low] = arr[high];
+	        while (low < high && arr[low] <= middle) ++low;
+	        arr[high] = arr[low];
+        }
+        arr[low] = middle;
+        return low;
+    }
 	
 	public static void main(String[] args) {
 		int[] arr = {3,8,2,5,7};

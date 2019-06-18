@@ -11,6 +11,7 @@
     <modules>
         <module>mybatis_dome</module>
         <module>mybatis_generator</module>
+        <module>mybatis_myHH</module>
     </modules>
 
     <parent>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leimingtech.mapper.ShopColorMapper">
+  <resultMap id="BaseResultMap" type="com.leimingtech.entity.ShopColor">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="COLOR_CATEGORY_ID" jdbcType="INTEGER" property="colorCategoryId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="NAME_JP" jdbcType="VARCHAR" property="nameJp" />
+    <result column="GLOBAL_NAME" jdbcType="VARCHAR" property="globalName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, COLOR_CATEGORY_ID, NAME, NAME_JP, GLOBAL_NAME
+  </sql>
+  <select id="selectByExample" parameterType="com.leimingtech.entity.ShopColorExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SHOP_COLOR
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.leimingtech.entity.ShopColorExample">
+    delete from SHOP_COLOR
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.leimingtech.entity.ShopColor">
+    insert into SHOP_COLOR (ID, COLOR_CATEGORY_ID, NAME, 
+      NAME_JP, GLOBAL_NAME)
+    values (#{id,jdbcType=INTEGER}, #{colorCategoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{nameJp,jdbcType=VARCHAR}, #{globalName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.leimingtech.entity.ShopColor">
+    insert into SHOP_COLOR
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="colorCategoryId != null">
+        COLOR_CATEGORY_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="nameJp != null">
+        NAME_JP,
+      </if>
+      <if test="globalName != null">
+        GLOBAL_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="colorCategoryId != null">
+        #{colorCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJp != null">
+        #{nameJp,jdbcType=VARCHAR},
+      </if>
+      <if test="globalName != null">
+        #{globalName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.leimingtech.entity.ShopColorExample" resultType="java.lang.Integer">
+    select count(*) from SHOP_COLOR
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SHOP_COLOR
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.colorCategoryId != null">
+        COLOR_CATEGORY_ID = #{record.colorCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameJp != null">
+        NAME_JP = #{record.nameJp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.globalName != null">
+        GLOBAL_NAME = #{record.globalName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SHOP_COLOR
+    set ID = #{record.id,jdbcType=INTEGER},
+      COLOR_CATEGORY_ID = #{record.colorCategoryId,jdbcType=INTEGER},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      NAME_JP = #{record.nameJp,jdbcType=VARCHAR},
+      GLOBAL_NAME = #{record.globalName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

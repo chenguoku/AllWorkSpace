@@ -52,7 +52,8 @@ public class TestThread {
 	 * @throws
 	 */
 	public static void main(String[] args) throws InterruptedException {
-/////////////////////第二种///////////////////////////////////////		
+/////////////////////第二种///////////////////////////////////////
+
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
 		executorService.execute(thread1);
 		executorService.execute(thread2);

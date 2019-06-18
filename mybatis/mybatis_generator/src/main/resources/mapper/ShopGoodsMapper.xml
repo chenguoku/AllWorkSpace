@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leimingtech.mapper.ShopGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.leimingtech.entity.ShopGoods">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ID_JP" jdbcType="INTEGER" property="idJp" />
+    <result column="GOODS_CODE" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="PART_NUMBER" jdbcType="VARCHAR" property="partNumber" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="STORE_ID" jdbcType="INTEGER" property="storeId" />
+    <result column="STORE_NAME" jdbcType="VARCHAR" property="storeName" />
+    <result column="NAME_JP" jdbcType="VARCHAR" property="nameJp" />
+    <result column="GOODS_SIZE_TABLE" jdbcType="VARCHAR" property="goodsSizeTable" />
+    <result column="GOODS_SIZE_TABLE_JP" jdbcType="VARCHAR" property="goodsSizeTableJp" />
+    <result column="BRAND_ID" jdbcType="INTEGER" property="brandId" />
+    <result column="BRAND_NAME" jdbcType="VARCHAR" property="brandName" />
+    <result column="MAIN_GOODS_CS_ID" jdbcType="INTEGER" property="mainGoodsCsId" />
+    <result column="GOODS_TYPE_ID_JP" jdbcType="INTEGER" property="goodsTypeIdJp" />
+    <result column="GOODS_TYPE_ID" jdbcType="VARCHAR" property="goodsTypeId" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="DESCRIPTION_JP" jdbcType="VARCHAR" property="descriptionJp" />
+    <result column="GENDERS" jdbcType="VARCHAR" property="genders" />
+    <result column="MADE_IN" jdbcType="VARCHAR" property="madeIn" />
+    <result column="MADE_IN_JP" jdbcType="VARCHAR" property="madeInJp" />
+    <result column="MATERIAL" jdbcType="VARCHAR" property="material" />
+    <result column="MATERIAL_JP" jdbcType="VARCHAR" property="materialJp" />
+    <result column="NEW_OR_RE_ARRIVAL" jdbcType="VARCHAR" property="newOrReArrival" />
+    <result column="COMING_SOON" jdbcType="BIT" property="comingSoon" />
+    <result column="SHOW_WEB" jdbcType="BIT" property="showWeb" />
+    <result column="SOLD_OUT" jdbcType="VARCHAR" property="soldOut" />
+    <result column="IMAGE_FILE_STATUS" jdbcType="VARCHAR" property="imageFileStatus" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, ID_JP, GOODS_CODE, PART_NUMBER, NAME, STORE_ID, STORE_NAME, NAME_JP, GOODS_SIZE_TABLE, 
+    GOODS_SIZE_TABLE_JP, BRAND_ID, BRAND_NAME, MAIN_GOODS_CS_ID, GOODS_TYPE_ID_JP, GOODS_TYPE_ID, 
+    DESCRIPTION, DESCRIPTION_JP, GENDERS, MADE_IN, MADE_IN_JP, MATERIAL, MATERIAL_JP, 
+    NEW_OR_RE_ARRIVAL, COMING_SOON, SHOW_WEB, SOLD_OUT, IMAGE_FILE_STATUS
+  </sql>
+  <select id="selectByExample" parameterType="com.leimingtech.entity.ShopGoodsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SHOP_GOODS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SHOP_GOODS
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from SHOP_GOODS
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.leimingtech.entity.ShopGoodsExample">
+    delete from SHOP_GOODS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.leimingtech.entity.ShopGoods">
+    insert into SHOP_GOODS (ID, ID_JP, GOODS_CODE, 
+      PART_NUMBER, NAME, STORE_ID, 
+      STORE_NAME, NAME_JP, GOODS_SIZE_TABLE, 
+      GOODS_SIZE_TABLE_JP, BRAND_ID, BRAND_NAME, 
+      MAIN_GOODS_CS_ID, GOODS_TYPE_ID_JP, GOODS_TYPE_ID, 
+      DESCRIPTION, DESCRIPTION_JP, GENDERS, 
+      MADE_IN, MADE_IN_JP, MATERIAL, 
+      MATERIAL_JP, NEW_OR_RE_ARRIVAL, COMING_SOON, 
+      SHOW_WEB, SOLD_OUT, IMAGE_FILE_STATUS
+      )
+    values (#{id,jdbcType=INTEGER}, #{idJp,jdbcType=INTEGER}, #{goodsCode,jdbcType=VARCHAR}, 
+      #{partNumber,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{storeId,jdbcType=INTEGER}, 
+      #{storeName,jdbcType=VARCHAR}, #{nameJp,jdbcType=VARCHAR}, #{goodsSizeTable,jdbcType=VARCHAR}, 
+      #{goodsSizeTableJp,jdbcType=VARCHAR}, #{brandId,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, 
+      #{mainGoodsCsId,jdbcType=INTEGER}, #{goodsTypeIdJp,jdbcType=INTEGER}, #{goodsTypeId,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{descriptionJp,jdbcType=VARCHAR}, #{genders,jdbcType=VARCHAR}, 
+      #{madeIn,jdbcType=VARCHAR}, #{madeInJp,jdbcType=VARCHAR}, #{material,jdbcType=VARCHAR}, 
+      #{materialJp,jdbcType=VARCHAR}, #{newOrReArrival,jdbcType=VARCHAR}, #{comingSoon,jdbcType=BIT}, 
+      #{showWeb,jdbcType=BIT}, #{soldOut,jdbcType=VARCHAR}, #{imageFileStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.leimingtech.entity.ShopGoods">
+    insert into SHOP_GOODS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="idJp != null">
+        ID_JP,
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE,
+      </if>
+      <if test="partNumber != null">
+        PART_NUMBER,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="storeId != null">
+        STORE_ID,
+      </if>
+      <if test="storeName != null">
+        STORE_NAME,
+      </if>
+      <if test="nameJp != null">
+        NAME_JP,
+      </if>
+      <if test="goodsSizeTable != null">
+        GOODS_SIZE_TABLE,
+      </if>
+      <if test="goodsSizeTableJp != null">
+        GOODS_SIZE_TABLE_JP,
+      </if>
+      <if test="brandId != null">
+        BRAND_ID,
+      </if>
+      <if test="brandName != null">
+        BRAND_NAME,
+      </if>
+      <if test="mainGoodsCsId != null">
+        MAIN_GOODS_CS_ID,
+      </if>
+      <if test="goodsTypeIdJp != null">
+        GOODS_TYPE_ID_JP,
+      </if>
+      <if test="goodsTypeId != null">
+        GOODS_TYPE_ID,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="descriptionJp != null">
+        DESCRIPTION_JP,
+      </if>
+      <if test="genders != null">
+        GENDERS,
+      </if>
+      <if test="madeIn != null">
+        MADE_IN,
+      </if>
+      <if test="madeInJp != null">
+        MADE_IN_JP,
+      </if>
+      <if test="material != null">
+        MATERIAL,
+      </if>
+      <if test="materialJp != null">
+        MATERIAL_JP,
+      </if>
+      <if test="newOrReArrival != null">
+        NEW_OR_RE_ARRIVAL,
+      </if>
+      <if test="comingSoon != null">
+        COMING_SOON,
+      </if>
+      <if test="showWeb != null">
+        SHOW_WEB,
+      </if>
+      <if test="soldOut != null">
+        SOLD_OUT,
+      </if>
+      <if test="imageFileStatus != null">
+        IMAGE_FILE_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="idJp != null">
+        #{idJp,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="partNumber != null">
+        #{partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJp != null">
+        #{nameJp,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSizeTable != null">
+        #{goodsSizeTable,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSizeTableJp != null">
+        #{goodsSizeTableJp,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null">
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="mainGoodsCsId != null">
+        #{mainGoodsCsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTypeIdJp != null">
+        #{goodsTypeIdJp,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTypeId != null">
+        #{goodsTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionJp != null">
+        #{descriptionJp,jdbcType=VARCHAR},
+      </if>
+      <if test="genders != null">
+        #{genders,jdbcType=VARCHAR},
+      </if>
+      <if test="madeIn != null">
+        #{madeIn,jdbcType=VARCHAR},
+      </if>
+      <if test="madeInJp != null">
+        #{madeInJp,jdbcType=VARCHAR},
+      </if>
+      <if test="material != null">
+        #{material,jdbcType=VARCHAR},
+      </if>
+      <if test="materialJp != null">
+        #{materialJp,jdbcType=VARCHAR},
+      </if>
+      <if test="newOrReArrival != null">
+        #{newOrReArrival,jdbcType=VARCHAR},
+      </if>
+      <if test="comingSoon != null">
+        #{comingSoon,jdbcType=BIT},
+      </if>
+      <if test="showWeb != null">
+        #{showWeb,jdbcType=BIT},
+      </if>
+      <if test="soldOut != null">
+        #{soldOut,jdbcType=VARCHAR},
+      </if>
+      <if test="imageFileStatus != null">
+        #{imageFileStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.leimingtech.entity.ShopGoodsExample" resultType="java.lang.Integer">
+    select count(*) from SHOP_GOODS
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SHOP_GOODS
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.idJp != null">
+        ID_JP = #{record.idJp,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsCode != null">
+        GOODS_CODE = #{record.goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.partNumber != null">
+        PART_NUMBER = #{record.partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeId != null">
+        STORE_ID = #{record.storeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.storeName != null">
+        STORE_NAME = #{record.storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nameJp != null">
+        NAME_JP = #{record.nameJp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsSizeTable != null">
+        GOODS_SIZE_TABLE = #{record.goodsSizeTable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsSizeTableJp != null">
+        GOODS_SIZE_TABLE_JP = #{record.goodsSizeTableJp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandId != null">
+        BRAND_ID = #{record.brandId,jdbcType=INTEGER},
+      </if>
+      <if test="record.brandName != null">
+        BRAND_NAME = #{record.brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainGoodsCsId != null">
+        MAIN_GOODS_CS_ID = #{record.mainGoodsCsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsTypeIdJp != null">
+        GOODS_TYPE_ID_JP = #{record.goodsTypeIdJp,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsTypeId != null">
+        GOODS_TYPE_ID = #{record.goodsTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.descriptionJp != null">
+        DESCRIPTION_JP = #{record.descriptionJp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.genders != null">
+        GENDERS = #{record.genders,jdbcType=VARCHAR},
+      </if>
+      <if test="record.madeIn != null">
+        MADE_IN = #{record.madeIn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.madeInJp != null">
+        MADE_IN_JP = #{record.madeInJp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.material != null">
+        MATERIAL = #{record.material,jdbcType=VARCHAR},
+      </if>
+      <if test="record.materialJp != null">
+        MATERIAL_JP = #{record.materialJp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newOrReArrival != null">
+        NEW_OR_RE_ARRIVAL = #{record.newOrReArrival,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comingSoon != null">
+        COMING_SOON = #{record.comingSoon,jdbcType=BIT},
+      </if>
+      <if test="record.showWeb != null">
+        SHOW_WEB = #{record.showWeb,jdbcType=BIT},
+      </if>
+      <if test="record.soldOut != null">
+        SOLD_OUT = #{record.soldOut,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageFileStatus != null">
+        IMAGE_FILE_STATUS = #{record.imageFileStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SHOP_GOODS
+    set ID = #{record.id,jdbcType=INTEGER},
+      ID_JP = #{record.idJp,jdbcType=INTEGER},
+      GOODS_CODE = #{record.goodsCode,jdbcType=VARCHAR},
+      PART_NUMBER = #{record.partNumber,jdbcType=VARCHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      STORE_ID = #{record.storeId,jdbcType=INTEGER},
+      STORE_NAME = #{record.storeName,jdbcType=VARCHAR},
+      NAME_JP = #{record.nameJp,jdbcType=VARCHAR},
+      GOODS_SIZE_TABLE = #{record.goodsSizeTable,jdbcType=VARCHAR},
+      GOODS_SIZE_TABLE_JP = #{record.goodsSizeTableJp,jdbcType=VARCHAR},
+      BRAND_ID = #{record.brandId,jdbcType=INTEGER},
+      BRAND_NAME = #{record.brandName,jdbcType=VARCHAR},
+      MAIN_GOODS_CS_ID = #{record.mainGoodsCsId,jdbcType=INTEGER},
+      GOODS_TYPE_ID_JP = #{record.goodsTypeIdJp,jdbcType=INTEGER},
+      GOODS_TYPE_ID = #{record.goodsTypeId,jdbcType=VARCHAR},
+      DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      DESCRIPTION_JP = #{record.descriptionJp,jdbcType=VARCHAR},
+      GENDERS = #{record.genders,jdbcType=VARCHAR},
+      MADE_IN = #{record.madeIn,jdbcType=VARCHAR},
+      MADE_IN_JP = #{record.madeInJp,jdbcType=VARCHAR},
+      MATERIAL = #{record.material,jdbcType=VARCHAR},
+      MATERIAL_JP = #{record.materialJp,jdbcType=VARCHAR},
+      NEW_OR_RE_ARRIVAL = #{record.newOrReArrival,jdbcType=VARCHAR},
+      COMING_SOON = #{record.comingSoon,jdbcType=BIT},
+      SHOW_WEB = #{record.showWeb,jdbcType=BIT},
+      SOLD_OUT = #{record.soldOut,jdbcType=VARCHAR},
+      IMAGE_FILE_STATUS = #{record.imageFileStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.leimingtech.entity.ShopGoods">
+    update SHOP_GOODS
+    <set>
+      <if test="idJp != null">
+        ID_JP = #{idJp,jdbcType=INTEGER},
+      </if>
+      <if test="goodsCode != null">
+        GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="partNumber != null">
+        PART_NUMBER = #{partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        STORE_ID = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="storeName != null">
+        STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nameJp != null">
+        NAME_JP = #{nameJp,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSizeTable != null">
+        GOODS_SIZE_TABLE = #{goodsSizeTable,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSizeTableJp != null">
+        GOODS_SIZE_TABLE_JP = #{goodsSizeTableJp,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null">
+        BRAND_ID = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="brandName != null">
+        BRAND_NAME = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="mainGoodsCsId != null">
+        MAIN_GOODS_CS_ID = #{mainGoodsCsId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTypeIdJp != null">
+        GOODS_TYPE_ID_JP = #{goodsTypeIdJp,jdbcType=INTEGER},
+      </if>
+      <if test="goodsTypeId != null">
+        GOODS_TYPE_ID = #{goodsTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="descriptionJp != null">
+        DESCRIPTION_JP = #{descriptionJp,jdbcType=VARCHAR},
+      </if>
+      <if test="genders != null">
+        GENDERS = #{genders,jdbcType=VARCHAR},
+      </if>
+      <if test="madeIn != null">
+        MADE_IN = #{madeIn,jdbcType=VARCHAR},
+      </if>
+      <if test="madeInJp != null">
+        MADE_IN_JP = #{madeInJp,jdbcType=VARCHAR},
+      </if>
+      <if test="material != null">
+        MATERIAL = #{material,jdbcType=VARCHAR},
+      </if>
+      <if test="materialJp != null">
+        MATERIAL_JP = #{materialJp,jdbcType=VARCHAR},
+      </if>
+      <if test="newOrReArrival != null">
+        NEW_OR_RE_ARRIVAL = #{newOrReArrival,jdbcType=VARCHAR},
+      </if>
+      <if test="comingSoon != null">
+        COMING_SOON = #{comingSoon,jdbcType=BIT},
+      </if>
+      <if test="showWeb != null">
+        SHOW_WEB = #{showWeb,jdbcType=BIT},
+      </if>
+      <if test="soldOut != null">
+        SOLD_OUT = #{soldOut,jdbcType=VARCHAR},
+      </if>
+      <if test="imageFileStatus != null">
+        IMAGE_FILE_STATUS = #{imageFileStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.leimingtech.entity.ShopGoods">
+    update SHOP_GOODS
+    set ID_JP = #{idJp,jdbcType=INTEGER},
+      GOODS_CODE = #{goodsCode,jdbcType=VARCHAR},
+      PART_NUMBER = #{partNumber,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      STORE_ID = #{storeId,jdbcType=INTEGER},
+      STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      NAME_JP = #{nameJp,jdbcType=VARCHAR},
+      GOODS_SIZE_TABLE = #{goodsSizeTable,jdbcType=VARCHAR},
+      GOODS_SIZE_TABLE_JP = #{goodsSizeTableJp,jdbcType=VARCHAR},
+      BRAND_ID = #{brandId,jdbcType=INTEGER},
+      BRAND_NAME = #{brandName,jdbcType=VARCHAR},
+      MAIN_GOODS_CS_ID = #{mainGoodsCsId,jdbcType=INTEGER},
+      GOODS_TYPE_ID_JP = #{goodsTypeIdJp,jdbcType=INTEGER},
+      GOODS_TYPE_ID = #{goodsTypeId,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      DESCRIPTION_JP = #{descriptionJp,jdbcType=VARCHAR},
+      GENDERS = #{genders,jdbcType=VARCHAR},
+      MADE_IN = #{madeIn,jdbcType=VARCHAR},
+      MADE_IN_JP = #{madeInJp,jdbcType=VARCHAR},
+      MATERIAL = #{material,jdbcType=VARCHAR},
+      MATERIAL_JP = #{materialJp,jdbcType=VARCHAR},
+      NEW_OR_RE_ARRIVAL = #{newOrReArrival,jdbcType=VARCHAR},
+      COMING_SOON = #{comingSoon,jdbcType=BIT},
+      SHOW_WEB = #{showWeb,jdbcType=BIT},
+      SOLD_OUT = #{soldOut,jdbcType=VARCHAR},
+      IMAGE_FILE_STATUS = #{imageFileStatus,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

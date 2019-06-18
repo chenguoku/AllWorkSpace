@@ -15,9 +15,9 @@
 
         <!--链接地址-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.190.133:3306/test"
+                        connectionURL="jdbc:mysql://39.106.65.94:3306/zozo"
                         userId="root"
-                        password="123456">
+                        password="qzc4845464">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -25,26 +25,26 @@
         </javaTypeResolver>
 
         <!--dao地址-->
-        <javaModelGenerator targetPackage="com.hh.dao"
+        <javaModelGenerator targetPackage="com.leimingtech.entity"
                             targetProject="F:\AllWorkSpaces\mybatis\mybatis_generator\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!--xml地址-->
-        <sqlMapGenerator targetPackage="com.hh.dao"
+        <sqlMapGenerator targetPackage="mapper"
                          targetProject="F:\AllWorkSpaces\mybatis\mybatis_generator\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!--mapper地址-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hh.mapper"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.leimingtech.mapper"
                              targetProject="F:\AllWorkSpaces\mybatis\mybatis_generator\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!--对应的表  schema 是数据库 tableName是表名 domainObjectName生成实体类的名-->
-        <table schema="test" tableName="Student" domainObjectName="Student">
+        <table schema="zozo" tableName="SHOP_BRAND" domainObjectName="ShopBrand">
             <property name="useActualColumnNames" value="false"/>
             <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
             <columnOverride column="DATE_FIELD" property="startDate"/>
@@ -52,13 +52,204 @@
             <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
         </table>
 
-        <table schema="test" tableName="SC" domainObjectName="Sc">
+        <table schema="zozo" tableName="SHOP_CART" domainObjectName="ShopCart">
             <property name="useActualColumnNames" value="false"/>
             <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
             <columnOverride column="DATE_FIELD" property="startDate"/>
             <ignoreColumn column="FRED"/>
             <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
         </table>
+        <table schema="zozo" tableName="SHOP_CATAGORY_TAG" domainObjectName="ShopCatagoryTag">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_CATEGORY" domainObjectName="ShopCategory">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_CATEGORY_JP" domainObjectName="ShopCategoryJp">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_COLOR" domainObjectName="ShopColor">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_COLOR_CATEGORY" domainObjectName="ShopColorCategory">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_GOODS" domainObjectName="ShopGoods">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_GOODS_COLOR" domainObjectName="ShopGoodsColor">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_GOODS_CS" domainObjectName="ShopGoodsCs">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_GOODS_IMAGES" domainObjectName="ShopGoodsImages">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_GOODS_SIZE" domainObjectName="ShopGoodsSize">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_GOODS_SPECS" domainObjectName="ShopGoodsSpecs">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_GOODS_TAG_DETAIL" domainObjectName="ShopGoodsTagDetail">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_LABEL" domainObjectName="ShopLabel">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_ORDER" domainObjectName="ShopOrder">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_ORDER_ADDRESS" domainObjectName="ShopOrderAddress">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_ORDER_DADDRESS" domainObjectName="ShopOrderDaddress">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_ORDER_GOODS" domainObjectName="ShopOrderGoods">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_ORDER_LOG" domainObjectName="ShopOrderLog">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_ORDER_LOGISTICS_LOG" domainObjectName="ShopOrderLogisticsLog">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_PAYMENT_HISTORY" domainObjectName="ShopPaymentHistory">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_PAYMENT_METHOD" domainObjectName="ShopPaymentMethod">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_SIZE" domainObjectName="ShopSize">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_SIZE_JP" domainObjectName="ShopSizeJp">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_STORE" domainObjectName="ShopStore">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_STORE_BRAND" domainObjectName="ShopStoreBrand">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_TAG" domainObjectName="ShopTag">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+        <table schema="zozo" tableName="SHOP_TAG_DETAIL" domainObjectName="ShopTagDetail">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+            <columnOverride column="DATE_FIELD" property="startDate"/>
+            <ignoreColumn column="FRED"/>
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>
+        </table>
+
+
 
     </context>
 </generatorConfiguration>
