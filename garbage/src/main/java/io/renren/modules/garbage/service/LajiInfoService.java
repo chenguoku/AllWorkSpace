@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import io.renren.common.utils.PageUtils;
 import io.renren.modules.garbage.entity.LajiInfoEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +17,9 @@ import java.util.Map;
 public interface LajiInfoService extends IService<LajiInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    List<LajiInfoEntity> queryGarbageInfo(String name);
+
+    void updateInfoCount(LajiInfoEntity lajiInfoEntity);
 }
 
