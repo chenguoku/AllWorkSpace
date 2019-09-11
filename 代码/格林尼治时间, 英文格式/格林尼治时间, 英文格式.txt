@@ -1,0 +1,11 @@
+/**
+     * 获取 格林尼治时间, 英文格式, 例如: Fri, 09 Oct 2015 04:06:18 GMT)
+     * @return
+     */
+    public static String getGMTTime(){
+        Calendar cd = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss 'GMT'", Locale.US);
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT")); // 设置时区为GMT
+        String str = sdf.format(cd.getTime());
+        return str;
+    }
