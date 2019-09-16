@@ -1,0 +1,22 @@
+spring:
+  mvc:
+    view:
+      # 页面默认前缀目录
+      prefix: /WEB-INF/jsp/
+      # 响应页面默认后缀
+      suffix: .jsp
+      
+appid: wx5c43fde3c9733d9e
+secret: b8b217126c33a5fb7074927d5e72a81a
+redirectUri: http://127.0.0.1:8080/callback
+### 生成微信授权
+authorizedUrl: https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
+###获取code后，请求以下链接获取access_token
+access_token: https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
+###拉取用户信息(需scope为 snsapi_userinfo)
+userinfo: https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
+
+
+
+
+ 
