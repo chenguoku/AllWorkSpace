@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -109,6 +110,18 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
         redisUtils.set(token, tokenMappingVo);
 
         return new Result<LoginVo>().ok(loginVo);
+    }
+
+    @Override
+    public UserEntity selectByName(String username) {
+        QueryWrapper<UserEntity> queryWrapper = new QueryWrapper();
+        queryWrapper.eq("username",username);
+
+        List<UserEntity> list = this.list(queryWrapper);
+        if (list.size() > 0){
+            return list.get(0);
+        }
+        return null;
     }
 
     private String getRandomToken() {

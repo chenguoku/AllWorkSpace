@@ -28,6 +28,15 @@ public interface UserService extends IService<UserEntity> {
      */
     Result wechatLogin(LoginForm form);
 
+    /**
+     * 根据用户名查询用户信息
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/9/18
+     */
+    UserEntity selectByName(String username);
+
 
 }
 
