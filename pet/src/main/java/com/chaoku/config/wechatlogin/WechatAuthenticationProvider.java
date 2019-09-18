@@ -1,23 +1,40 @@
 package com.chaoku.config.wechatlogin;
 
+import com.alibaba.fastjson.JSON;
+import com.chaoku.common.utils.HttpClientTool;
+import com.chaoku.config.LoginConstant;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 短信登陆鉴权 Provider，要求实现 AuthenticationProvider 接口
+ *
  * @author chenguoku
  * @since 2019/9/18
  */
-public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
+public class WechatAuthenticationProvider implements AuthenticationProvider {
+    @Value("${wechat.loginUrl}")
+    private String wechatLoginUrl;
+
+    @Value("${wechat.appid}")
+    private String appId;
+
+    @Value("${wechat.secret}")
+    private String secret;
+
+    @Value("${wechat.grant_type}")
+    private String grantType;
+
+    @Autowired
     private UserDetailsService userDetailsService;
 
     @Override
@@ -26,10 +43,11 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
         String code = String.valueOf(authentication.getCredentials());
         String userId = String.valueOf(authenticationToken.getPrincipal());
 
+        //调用微信的登录接口 验证code 是否正确
+        String sessionKeyAndOpenId = checkCode(code);
+        String togetherString = sessionKeyAndOpenId + LoginConstant.SESSION_OPEN_USER_SPLIT + userId;
 
-        checkSmsCode(mobile);
-
-        UserDetails userDetails = userDetailsService.loadUserByUsername(mobile);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(togetherString);
 
         // 此时鉴权成功后，应当重新 new 一个拥有鉴权的 authenticationResult 返回
         WechatAuthenticationToken authenticationResult = new WechatAuthenticationToken(userDetails, userDetails.getAuthorities());
@@ -39,25 +57,26 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
         return authenticationResult;
     }
 
-    private void checkSmsCode(String mobile) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String inputCode = request.getParameter("smsCode");
+    private String checkCode(String code) {
+        //请求微信登录链接
+        Map<String, String> map = new HashMap<>();
+        map.put("appid", appId);
+        map.put("secret", secret);
+        map.put("js_code", code);
+        map.put("grant_type", grantType);
+        String s = HttpClientTool.doGet(wechatLoginUrl, map);
+        Map loginResultMap = JSON.parseObject(s, Map.class);
 
-        Map<String, Object> smsCode = (Map<String, Object>) request.getSession().getAttribute("smsCode");
-        if(smsCode == null) {
-            throw new BadCredentialsException("未检测到申请验证码");
+        if (loginResultMap.get("session_key") == null) {
+            throw new BadCredentialsException("wechat login code error!");
         }
 
-        String applyMobile = (String) smsCode.get("mobile");
-        int code = (int) smsCode.get("code");
+        String sessionKey = String.valueOf(loginResultMap.get("session_key"));
+        String openId = String.valueOf(loginResultMap.get("openid"));
 
-        if(!applyMobile.equals(mobile)) {
-            throw new BadCredentialsException("申请的手机号码与登录手机号码不一致");
-        }
-        if(code != Integer.parseInt(inputCode)) {
-            throw new BadCredentialsException("验证码错误");
-        }
+        return sessionKey + LoginConstant.SESSION_OPEN_SPLIT + openId;
     }
+
 
     @Override
     public boolean supports(Class<?> authentication) {

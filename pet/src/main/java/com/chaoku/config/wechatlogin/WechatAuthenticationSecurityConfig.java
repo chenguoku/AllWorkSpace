@@ -14,21 +14,21 @@ public class WechatAuthenticationSecurityConfig extends SecurityConfigurerAdapte
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
-    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+    private WechatAuthenticationSuccessHandler wechatAuthenticationSuccessHandler;
     @Autowired
-    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+    private WechatAuthenticationFailureHandler wechatAuthenticationFailureHandler;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         WechatAuthenticationFilter wechatAuthenticationFilter = new WechatAuthenticationFilter();
         wechatAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
-        wechatAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
-        wechatAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
+        wechatAuthenticationFilter.setAuthenticationSuccessHandler(wechatAuthenticationSuccessHandler);
+        wechatAuthenticationFilter.setAuthenticationFailureHandler(wechatAuthenticationFailureHandler);
 
-        SmsCodeAuthenticationProvider smsCodeAuthenticationProvider = new SmsCodeAuthenticationProvider();
-        smsCodeAuthenticationProvider.setUserDetailsService(userDetailsService);
+        WechatAuthenticationProvider wechatAuthenticationProvider = new WechatAuthenticationProvider();
+        wechatAuthenticationProvider.setUserDetailsService(userDetailsService);
 
-        http.authenticationProvider(smsCodeAuthenticationProvider)
+        http.authenticationProvider(wechatAuthenticationProvider)
                 .addFilterAfter(wechatAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

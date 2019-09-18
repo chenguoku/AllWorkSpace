@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
+public class WechatAuthenticationFailureHandler implements AuthenticationFailureHandler {
     @Autowired
     private ObjectMapper objectMapper;
 
