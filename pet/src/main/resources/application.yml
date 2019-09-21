@@ -93,3 +93,16 @@ wechat:
   appid: wx97b2e296c734b8db
   secret: f924e0e36e731396fabf5a5d7476325b
   grant_type: authorization_code
+
+oauth:
+  code: /code
+  url: /oauth/gettoken
+  client: client
+  authType: authorization_code
+  authTypetwo: password
+  authTypethree: refresh_token
+  scopes: all
+  secret: secret
+  redirectUris: http://127.0.0.1:8080/operation/user
+  tokenkeyAccess: permitAll()
+  codeurl: /auth/oauth/gettoken
