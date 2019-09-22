@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth;
+package com.hh.security_oauth_jwt.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.mybatis.spring.annotation.MapperScan;

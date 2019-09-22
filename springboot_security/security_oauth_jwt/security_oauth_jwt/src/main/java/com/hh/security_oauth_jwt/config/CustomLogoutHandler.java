@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth;
+package com.hh.security_oauth_jwt.config;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

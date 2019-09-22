@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth;
+package com.hh.security_oauth_jwt.config;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;

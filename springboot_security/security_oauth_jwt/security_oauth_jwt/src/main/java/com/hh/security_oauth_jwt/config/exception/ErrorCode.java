@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth.exception;
+package com.hh.security_oauth_jwt.config.exception;
 
 
 public class ErrorCode {

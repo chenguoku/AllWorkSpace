@@ -17,6 +17,6 @@ public interface LoginConstant {
     /**
      * sessionkey+openid 和 userId 的间隔符
      */
-    String SESSION_OPEN_USER_SPLIT = "*.*";
+    String SESSION_OPEN_USER_SPLIT = "#.#";
 
 }

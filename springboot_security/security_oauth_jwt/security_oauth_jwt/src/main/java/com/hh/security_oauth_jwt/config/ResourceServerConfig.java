@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth;
+package com.hh.security_oauth_jwt.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

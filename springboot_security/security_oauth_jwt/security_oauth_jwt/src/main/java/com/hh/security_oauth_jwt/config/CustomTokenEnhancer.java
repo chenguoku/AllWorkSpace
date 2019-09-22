@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth;
+package com.hh.security_oauth_jwt.config;
 
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;

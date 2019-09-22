@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth.exception;
+package com.hh.security_oauth_jwt.config.exception;
 
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 import org.apache.commons.lang.StringUtils;

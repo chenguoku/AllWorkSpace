@@ -1,7 +1,6 @@
-package com.chaoku.config.oauth.exception;
+package com.hh.security_oauth_jwt.config.exception;
 
 
-import com.chaoku.config.oauth.exception.ErrorCode;
 import org.springframework.http.HttpStatus;
 
 import java.io.PrintWriter;

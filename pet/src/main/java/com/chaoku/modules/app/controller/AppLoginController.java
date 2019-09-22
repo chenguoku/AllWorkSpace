@@ -18,10 +18,7 @@ import com.chaoku.modules.app.vo.user.LoginVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * APP登录授权
@@ -35,13 +32,18 @@ public class AppLoginController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("test")
+    @ApiOperation("测试")
+    public void test(){
+        System.out.println(111);
+    }
 
     /**
      * 登录
      */
     @PostMapping("login")
     @ApiOperation("登录")
-    public Result login(@RequestBody LoginForm form) {
+    public Result login(LoginForm form) {
         //表单校验
         ValidatorUtils.validateEntity(form);
 

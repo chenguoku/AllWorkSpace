@@ -23,17 +23,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.apply(wechatAuthenticationSecurityConfig).and().authorizeRequests()
-                // 如果有允许匿名的url，填在下面
-                .antMatchers("/sms/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                // 设置登陆页
-                .formLogin().loginPage("/login")
-                // 设置登陆成功页
-                .defaultSuccessUrl("/").permitAll()
-                .and()
-                .logout().permitAll();
+        http.apply(wechatAuthenticationSecurityConfig);
+//                .and().authorizeRequests()
+//                // 如果有允许匿名的url，填在下面
+//                .antMatchers("/sms/**").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                // 设置登陆页
+//                .formLogin().loginPage("/login")
+//                // 设置登陆成功页
+//                .defaultSuccessUrl("/").permitAll()
+//                .and()
+//                .logout().permitAll();
 
         // 关闭CSRF跨域
         http.csrf().disable();

@@ -50,7 +50,7 @@ public class WechatAuthenticationProvider implements AuthenticationProvider {
         UserDetails userDetails = userDetailsService.loadUserByUsername(togetherString);
 
         // 此时鉴权成功后，应当重新 new 一个拥有鉴权的 authenticationResult 返回
-        WechatAuthenticationToken authenticationResult = new WechatAuthenticationToken(userDetails, userDetails.getAuthorities());
+        WechatAuthenticationToken authenticationResult = new WechatAuthenticationToken(userDetails.getUsername(),userDetails.getPassword(), userDetails.getAuthorities());
 
         authenticationResult.setDetails(authenticationToken.getDetails());
 

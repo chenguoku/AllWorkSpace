@@ -29,6 +29,7 @@ public class WechatAuthenticationSecurityConfig extends SecurityConfigurerAdapte
         wechatAuthenticationProvider.setUserDetailsService(userDetailsService);
 
         http.authenticationProvider(wechatAuthenticationProvider)
+                .addFilterBefore(new TokenCheckFilter(),UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(wechatAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

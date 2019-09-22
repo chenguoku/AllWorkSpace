@@ -13,6 +13,7 @@ com\chaoku\common\utils\Constant.class
 com\chaoku\modules\oss\controller\SysOssController.class
 com\chaoku\modules\job\service\impl\ScheduleJobLogServiceImpl.class
 com\chaoku\modules\sys\dao\SysConfigDao.class
+com\chaoku\config\wechatlogin\WechatAuthenticationSecurityConfig.class
 com\chaoku\modules\sys\entity\SysRoleMenuEntity.class
 com\chaoku\modules\sys\controller\SysLoginController.class
 com\chaoku\modules\sys\form\SysLoginForm.class
@@ -32,9 +33,11 @@ com\chaoku\RenrenApplication$1.class
 com\chaoku\common\exception\RRExceptionHandler.class
 com\chaoku\common\validator\group\UpdateGroup.class
 com\chaoku\modules\sys\service\impl\SysRoleMenuServiceImpl.class
+com\chaoku\config\wechatlogin\WechatAuthenticationFilter.class
 com\chaoku\modules\oss\cloud\AliyunCloudStorageService.class
 com\chaoku\modules\oss\cloud\OSSFactory.class
 com\chaoku\common\utils\IPUtils.class
+com\chaoku\config\wechatlogin\WechatUserDetailsService.class
 com\chaoku\common\utils\HttpContextUtils.class
 com\chaoku\common\utils\R.class
 com\chaoku\modules\job\task\TestTask.class
@@ -44,6 +47,8 @@ com\chaoku\modules\sys\service\SysConfigService.class
 com\chaoku\modules\app\interceptor\AuthorizationInterceptor.class
 com\chaoku\modules\app\service\PetService.class
 com\chaoku\common\validator\group\Group.class
+com\chaoku\config\wechatlogin\WechatAuthenticationToken.class
+com\chaoku\config\wechatlogin\WechatAuthenticationSuccessHandler.class
 com\chaoku\modules\sys\dao\SysRoleDao.class
 com\chaoku\common\utils\Constant$MenuType.class
 com\chaoku\modules\sys\controller\SysLogController.class
@@ -55,7 +60,9 @@ com\chaoku\common\validator\ValidatorUtils.class
 com\chaoku\common\utils\MessageUtils.class
 com\chaoku\modules\sys\entity\SysConfigEntity.class
 com\chaoku\modules\job\entity\ScheduleJobEntity.class
+com\chaoku\config\LoginConstant.class
 com\chaoku\config\KaptchaConfig.class
+com\chaoku\config\wechatlogin\WechatAuthenticationFailureHandler.class
 com\chaoku\common\utils\ConfigConstant.class
 com\chaoku\modules\sys\service\SysRoleMenuService.class
 com\chaoku\modules\app\dao\PetDao.class
@@ -84,10 +91,11 @@ com\chaoku\modules\app\dao\UserPetDao.class
 com\chaoku\common\validator\group\QcloudGroup.class
 com\chaoku\config\MybatisPlusConfig.class
 com\chaoku\modules\sys\entity\SysCaptchaEntity.class
+com\chaoku\config\wechatlogin\TokenCheckFilter.class
 com\chaoku\datasource\config\DynamicDataSource.class
 META-INF\spring-configuration-metadata.json
 com\chaoku\modules\sys\entity\SysMenuEntity.class
-com\chaoku\config\ShiroConfig.class
+com\chaoku\common\utils\IdGenerator.class
 com\chaoku\modules\sys\entity\SysRoleEntity.class
 com\chaoku\modules\sys\dao\SysUserDao.class
 com\chaoku\modules\oss\cloud\CloudStorageConfig.class
@@ -105,12 +113,14 @@ com\chaoku\modules\oss\service\SysOssService.class
 com\chaoku\common\validator\AssertUtils.class
 com\chaoku\modules\job\entity\ScheduleJobLogEntity.class
 com\chaoku\modules\oss\cloud\CloudStorageService.class
+com\chaoku\modules\app\vo\user\TokenMappingVo.class
 com\chaoku\common\utils\ExcelUtils.class
 com\chaoku\modules\sys\form\PasswordForm.class
 com\chaoku\common\utils\RedisKeys.class
 com\chaoku\modules\sys\controller\SysMenuController.class
 com\chaoku\modules\app\controller\AppTestController.class
 com\chaoku\common\utils\Result.class
+com\chaoku\config\wechatlogin\WechatAuthenticationProvider.class
 com\chaoku\common\annotation\SysLog.class
 com\chaoku\modules\oss\entity\SysOssEntity.class
 com\chaoku\modules\sys\controller\SysConfigController.class
@@ -121,8 +131,8 @@ com\chaoku\modules\app\config\WebMvcConfig.class
 com\chaoku\common\utils\Query.class
 com\chaoku\modules\app\controller\AppRegisterController.class
 com\chaoku\modules\sys\service\SysMenuService.class
-com\chaoku\config\FilterConfig.class
 com\chaoku\common\xss\SQLFilter.class
+com\chaoku\config\WebSecurityConfig.class
 com\chaoku\modules\app\controller\AppLoginController.class
 com\chaoku\modules\sys\service\SysUserService.class
 com\chaoku\common\validator\group\AddGroup.class

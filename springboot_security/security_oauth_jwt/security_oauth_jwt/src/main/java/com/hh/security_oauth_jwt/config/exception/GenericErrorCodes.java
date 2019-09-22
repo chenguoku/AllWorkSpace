@@ -1,4 +1,4 @@
-package com.chaoku.config.oauth.exception;
+package com.hh.security_oauth_jwt.config.exception;
 
 public class GenericErrorCodes {
     public static ErrorCode GENERIC_API_ERROR_CODE = new ErrorCode(0001, "GENERIC_API_ERROR_CODE", "generic API error message");
