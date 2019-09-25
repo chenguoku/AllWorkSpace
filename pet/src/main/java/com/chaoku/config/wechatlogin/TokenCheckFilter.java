@@ -1,6 +1,9 @@
 package com.chaoku.config.wechatlogin;
 
-import org.springframework.stereotype.Component;
+import com.alibaba.fastjson.JSON;
+import com.chaoku.common.utils.RedisUtils;
+import com.chaoku.common.utils.Result;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -17,8 +20,15 @@ import java.io.IOException;
  * @Description token拦截
  * @createTime 2019年09月22日 23:57:00
  */
-@Component("tokenCheckFilter")
 public class TokenCheckFilter extends OncePerRequestFilter {
+
+    private static final String FILTER_APPLIED = "__spring_security_tokenCheckFilter_filterApplied";
+
+    public TokenCheckFilter(RedisUtils redisUtils) {
+        this.redisUtils = redisUtils;
+    }
+
+    private RedisUtils redisUtils;
 
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
@@ -26,24 +36,37 @@ public class TokenCheckFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if (!(antPathMatcher.match("/**/*.js",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/**/*.css",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/swagger-resources/**",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/v2/**",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/**/*.html",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/**/*.gif",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/**/*.ico",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/**/*.ttf",httpServletRequest.getRequestURI()) ||
-                antPathMatcher.match("/**/*.png",httpServletRequest.getRequestURI())
-        )){
+        if (!(antPathMatcher.match("/**/*.js", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/**/*.css", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/swagger-resources/**", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/v2/**", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/**/*.html", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/**/*.gif", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/**/*.ico", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/**/*.ttf", httpServletRequest.getRequestURI()) ||
+                antPathMatcher.match("/**/*.png", httpServletRequest.getRequestURI())
+        )) {
+
             String url = httpServletRequest.getRequestURI();
             String method = httpServletRequest.getMethod();
-            if (antPathMatcher.match("/",httpServletRequest.getRequestURI())){
-                System.out.println("拦截成功");
+
+            if (!StringUtils.equals(url, "/user/login") && !StringUtils.equals(method, "POST")) {
+                String token = httpServletRequest.getHeader("token");
+                if (token == null || StringUtils.isEmpty(token)) {
+                    httpServletResponse.getWriter().write(JSON.toJSONString(new Result<>().error("Token cannot be null!")));
+                    return;
+                } else {
+                    Object o = redisUtils.get(token);
+                    if (o == null) {
+                        httpServletResponse.getWriter().write(JSON.toJSONString(new Result<>().error("Token error!")));
+                        return;
+                    }
+                }
             }
+
         }
 
-        filterChain.doFilter(httpServletRequest,httpServletResponse);
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
 
     }
 }

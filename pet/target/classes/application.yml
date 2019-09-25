@@ -78,8 +78,6 @@ mybatis-plus:
 
 
 renren:
-  redis:
-    open: false
   # APP模块，是通过jwt认证的，如果要使用APP模块，则需要修改【加密秘钥】
   jwt:
     # 加密秘钥
@@ -94,15 +92,4 @@ wechat:
   secret: f924e0e36e731396fabf5a5d7476325b
   grant_type: authorization_code
 
-oauth:
-  code: /code
-  url: /oauth/gettoken
-  client: client
-  authType: authorization_code
-  authTypetwo: password
-  authTypethree: refresh_token
-  scopes: all
-  secret: secret
-  redirectUris: http://127.0.0.1:8080/operation/user
-  tokenkeyAccess: permitAll()
-  codeurl: /auth/oauth/gettoken
+

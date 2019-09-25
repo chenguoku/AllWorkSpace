@@ -40,7 +40,7 @@ public class WechatAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 构建拥有鉴权的 WechatAuthenticationToken
      */
-    public WechatAuthenticationToken(Object principal,Object credentials, Collection<? extends GrantedAuthority> authorities) {
+    public WechatAuthenticationToken(Object principal, Object credentials, Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
         this.principal = principal;
         this.credentials = credentials;

@@ -1,6 +1,8 @@
 package com.chaoku.config.wechatlogin;
 
+import com.chaoku.common.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,6 +19,10 @@ public class WechatAuthenticationSecurityConfig extends SecurityConfigurerAdapte
     private WechatAuthenticationSuccessHandler wechatAuthenticationSuccessHandler;
     @Autowired
     private WechatAuthenticationFailureHandler wechatAuthenticationFailureHandler;
+    @Autowired
+    private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -29,7 +35,7 @@ public class WechatAuthenticationSecurityConfig extends SecurityConfigurerAdapte
         wechatAuthenticationProvider.setUserDetailsService(userDetailsService);
 
         http.authenticationProvider(wechatAuthenticationProvider)
-                .addFilterBefore(new TokenCheckFilter(),UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new TokenCheckFilter(redisUtils),UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(wechatAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }

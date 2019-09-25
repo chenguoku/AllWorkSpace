@@ -40,6 +40,7 @@ public class SysConfigRedis {
 
     public SysConfigEntity get(String configKey){
         String key = RedisKeys.getSysConfigKey(configKey);
-        return redisUtils.get(key, SysConfigEntity.class);
+        SysConfigEntity o = (SysConfigEntity)redisUtils.get(key);
+        return o;
     }
 }

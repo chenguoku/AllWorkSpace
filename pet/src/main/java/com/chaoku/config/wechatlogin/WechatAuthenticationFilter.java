@@ -5,7 +5,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,7 +56,7 @@ public class WechatAuthenticationFilter extends AbstractAuthenticationProcessing
         userId = userId.trim();
         code = code.trim();
 
-        WechatAuthenticationToken authRequest = new WechatAuthenticationToken(userId,code);
+        WechatAuthenticationToken authRequest = new WechatAuthenticationToken(userId, code);
 
         // Allow subclasses to set the "details" property
         setDetails(request, authRequest);

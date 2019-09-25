@@ -10,6 +10,7 @@ package com.chaoku.modules.app.controller;
 
 
 import com.chaoku.common.utils.JwtUtils;
+import com.chaoku.common.utils.RedisUtils;
 import com.chaoku.common.utils.Result;
 import com.chaoku.common.validator.ValidatorUtils;
 import com.chaoku.modules.app.form.LoginForm;
@@ -18,7 +19,10 @@ import com.chaoku.modules.app.vo.user.LoginVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * APP登录授权
@@ -32,10 +36,16 @@ public class AppLoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RedisUtils redisUtils;
+
     @GetMapping("test")
     @ApiOperation("测试")
-    public void test(){
+    public void test(HttpServletRequest request){
+        redisUtils.set("1","2",100L);
+        System.out.println(redisUtils.get("1"));
         System.out.println(111);
+        System.out.println(request.getHeader("token"));
     }
 
     /**

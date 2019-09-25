@@ -59,23 +59,20 @@ public class WechatAuthenticationProvider implements AuthenticationProvider {
 
     private String checkCode(String code) {
         //请求微信登录链接
-//        Map<String, String> map = new HashMap<>();
-//        map.put("appid", appId);
-//        map.put("secret", secret);
-//        map.put("js_code", code);
-//        map.put("grant_type", grantType);
-//        String s = HttpClientTool.doGet(wechatLoginUrl, map);
-//        Map loginResultMap = JSON.parseObject(s, Map.class);
-//
-//        if (loginResultMap.get("session_key") == null) {
-//            throw new BadCredentialsException("wechat login code error!");
-//        }
-//
-//        String sessionKey = String.valueOf(loginResultMap.get("session_key"));
-//        String openId = String.valueOf(loginResultMap.get("openid"));
+        Map<String, String> map = new HashMap<>();
+        map.put("appid", appId);
+        map.put("secret", secret);
+        map.put("js_code", code);
+        map.put("grant_type", grantType);
+        String s = HttpClientTool.doGet(wechatLoginUrl, map);
+        Map loginResultMap = JSON.parseObject(s, Map.class);
 
-        String sessionKey = "324dsadwqe";
-        String openId = "432ds";
+        if (loginResultMap.get("session_key") == null) {
+            throw new BadCredentialsException("wechat login code error!");
+        }
+
+        String sessionKey = String.valueOf(loginResultMap.get("session_key"));
+        String openId = String.valueOf(loginResultMap.get("openid"));
 
         return sessionKey + LoginConstant.SESSION_OPEN_SPLIT + openId;
     }
