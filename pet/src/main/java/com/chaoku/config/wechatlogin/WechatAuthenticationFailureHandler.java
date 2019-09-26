@@ -1,5 +1,6 @@
 package com.chaoku.config.wechatlogin;
 
+import com.chaoku.common.utils.Result;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,6 @@ public class WechatAuthenticationFailureHandler implements AuthenticationFailure
 
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().write(objectMapper.writeValueAsString(exception.getMessage()));
+        response.getWriter().write(objectMapper.writeValueAsString(new Result<>().error(exception.getMessage())));
     }
 }

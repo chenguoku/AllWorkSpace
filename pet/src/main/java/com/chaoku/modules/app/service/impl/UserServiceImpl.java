@@ -95,12 +95,12 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
             UserEntity userEntity = userService.getById(form.getUserId());
             UserVo userVo = ConvertUtils.sourceToTarget(userEntity, UserVo.class);
             loginVo.setUserVo(userVo);
-            tokenMappingVo.setUserVo(userVo);
+//            tokenMappingVo.setUserVo(userVo);
 
             if (userEntity != null) {
                 PetVo petVo = petDao.getPetVo(userEntity.getId());
                 loginVo.setPetVo(petVo);
-                tokenMappingVo.setPetVo(petVo);
+//                tokenMappingVo.setPetVo(petVo);
             }
         }
 

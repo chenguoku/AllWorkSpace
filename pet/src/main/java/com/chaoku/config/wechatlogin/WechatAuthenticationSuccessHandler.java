@@ -1,10 +1,7 @@
 package com.chaoku.config.wechatlogin;
 
 import com.alibaba.fastjson.JSON;
-import com.chaoku.common.utils.ConvertUtils;
-import com.chaoku.common.utils.IdGenerator;
-import com.chaoku.common.utils.JwtUtils;
-import com.chaoku.common.utils.RedisUtils;
+import com.chaoku.common.utils.*;
 import com.chaoku.config.LoginConstant;
 import com.chaoku.modules.app.dao.PetDao;
 import com.chaoku.modules.app.entity.UserEntity;
@@ -18,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -68,12 +66,12 @@ public class WechatAuthenticationSuccessHandler implements AuthenticationSuccess
             UserEntity userEntity = userService.getById(userId);
             UserVo userVo = ConvertUtils.sourceToTarget(userEntity, UserVo.class);
             loginVo.setUserVo(userVo);
-            tokenMappingVo.setUserVo(userVo);
+            tokenMappingVo.setUserVo(JSON.toJSONString(userVo));
 
             if (userEntity != null) {
                 PetVo petVo = petDao.getPetVo(userEntity.getId());
                 loginVo.setPetVo(petVo);
-                tokenMappingVo.setPetVo(petVo);
+                tokenMappingVo.setPetVo(JSON.toJSONString(petVo));
             }
         }
 
@@ -83,7 +81,9 @@ public class WechatAuthenticationSuccessHandler implements AuthenticationSuccess
         Map<String, Object> map = JSON.parseObject(JSON.toJSONString(tokenMappingVo), Map.class);
         redisUtils.hMSet(token, map, TOKEN_EXPIRE);
 
-        response.getWriter().write(objectMapper.writeValueAsString(loginVo));
+        response.setStatus(HttpStatus.OK.value());
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(objectMapper.writeValueAsString(new Result<>().ok(loginVo)));
     }
 
     private String getRandomToken() {

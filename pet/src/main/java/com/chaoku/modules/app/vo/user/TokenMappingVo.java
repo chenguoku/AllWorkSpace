@@ -23,9 +23,9 @@ public class TokenMappingVo {
     private String openId;
 
     @ApiModelProperty("用户信息")
-    private UserVo userVo;
+    private String userVo;
 
     @ApiModelProperty("宠物游戏数据")
-    private PetVo petVo;
+    private String petVo;
 
 }
