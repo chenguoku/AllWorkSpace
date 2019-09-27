@@ -17,6 +17,7 @@ import com.chaoku.modules.app.form.LoginForm;
 import com.chaoku.modules.app.service.UserService;
 import com.chaoku.modules.app.vo.user.LoginVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -69,6 +70,12 @@ public class AppLoginController {
         result.setData(loginVo);
 
         return result;
+    }
+
+    @GetMapping(value = "login/check")
+    @ApiOperation("检查登录是否过期")
+    public Result checkLogin(){
+        return new Result().ok("success","success");
     }
 
 }
