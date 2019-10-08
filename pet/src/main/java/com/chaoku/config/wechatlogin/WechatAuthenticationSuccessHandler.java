@@ -71,7 +71,6 @@ public class WechatAuthenticationSuccessHandler implements AuthenticationSuccess
             if (userEntity != null) {
                 PetVo petVo = petDao.getPetVo(userEntity.getId());
                 loginVo.setPetVo(petVo);
-                tokenMappingVo.setPetVo(JSON.toJSONString(petVo));
             }
         }
 

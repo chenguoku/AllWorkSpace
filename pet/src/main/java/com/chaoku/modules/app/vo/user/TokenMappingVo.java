@@ -25,7 +25,4 @@ public class TokenMappingVo {
     @ApiModelProperty("用户信息")
     private String userVo;
 
-    @ApiModelProperty("宠物游戏数据")
-    private String petVo;
-
 }

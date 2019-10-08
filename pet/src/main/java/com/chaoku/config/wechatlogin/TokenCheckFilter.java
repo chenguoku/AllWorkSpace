@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * @author chenguoku
@@ -56,8 +57,8 @@ public class TokenCheckFilter extends OncePerRequestFilter {
                     httpServletResponse.getWriter().write(JSON.toJSONString(new Result<>().error("Token cannot be null!")));
                     return;
                 } else {
-                    Object o = redisUtils.get(token);
-                    if (o == null) {
+                    Map<String, Object> map = redisUtils.hGetAll(token);
+                    if (map == null || map.size() == 0) {
                         httpServletResponse.getWriter().write(JSON.toJSONString(new Result<>().error("Token error!")));
                         return;
                     }
