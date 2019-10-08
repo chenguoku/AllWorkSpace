@@ -9,19 +9,21 @@
 package com.chaoku.modules.app.controller;
 
 
-import com.chaoku.common.utils.JwtUtils;
+import com.alibaba.fastjson.JSON;
 import com.chaoku.common.utils.RedisUtils;
 import com.chaoku.common.utils.Result;
-import com.chaoku.common.validator.ValidatorUtils;
+import com.chaoku.modules.app.dao.PetDao;
 import com.chaoku.modules.app.form.LoginForm;
 import com.chaoku.modules.app.service.UserService;
-import com.chaoku.modules.app.vo.user.LoginVo;
+import com.chaoku.modules.app.vo.pet.PetVo;
+import com.chaoku.modules.app.vo.user.UserVo;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,22 +34,17 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/user")
-@Api(value = "AppLoginController",tags = "APP登录接口")
+@Api(value = "AppLoginController", tags = "APP登录接口")
 public class AppLoginController {
+
     @Autowired
     private UserService userService;
 
     @Autowired
     private RedisUtils redisUtils;
 
-    @GetMapping("test")
-    @ApiOperation("测试")
-    public void test(HttpServletRequest request){
-        redisUtils.set("1","2",100L);
-        System.out.println(redisUtils.get("1"));
-        System.out.println(111);
-        System.out.println(request.getHeader("token"));
-    }
+    @Autowired
+    private PetDao petDao;
 
     /**
      * 登录
@@ -55,27 +52,40 @@ public class AppLoginController {
     @PostMapping("login")
     @ApiOperation("登录")
     public Result login(LoginForm form) {
-        //表单校验
-        ValidatorUtils.validateEntity(form);
-
-        //用户登录
-        Result result = userService.wechatLogin(form);
-        if (result.getCode() == 500) {
-            return result;
-        }
-
-        LoginVo loginVo = (LoginVo) result.getData();
-
-
-        result.setData(loginVo);
-
-        return result;
+        return new Result();
     }
 
+    /**
+     * 检查登陆是否过期
+     *
+     * @return: com.chaoku.common.utils.Result
+     * @author: chenguoku
+     * @date: 2019/10/1
+     */
     @GetMapping(value = "login/check")
     @ApiOperation("检查登录是否过期")
-    public Result checkLogin(){
-        return new Result().ok("success","success");
+    public Result checkLogin() {
+        return new Result().ok(true, "success");
+    }
+
+    /**
+     * 获取游戏数据
+     *
+     * @param: request
+     * @return: com.chaoku.common.utils.Result
+     * @author: chenguoku
+     * @date: 2019/10/1
+     */
+    @GetMapping("game/data")
+    @ApiOperation("获取游戏数据")
+    public Result getGameData(HttpServletRequest request) {
+        String token = request.getHeader("token");
+        String userString = String.valueOf(redisUtils.hGet(token, "userVo"));
+        UserVo userVo = JSON.parseObject(userString, UserVo.class);
+
+        PetVo petVo = petDao.getPetVo(userVo.getId());
+
+        return new Result().ok(petVo);
     }
 
 }
