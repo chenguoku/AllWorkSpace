@@ -9,6 +9,7 @@
 package com.chaoku.modules.app.controller;
 
 
+import com.chaoku.common.utils.Result;
 import com.chaoku.modules.app.entity.UserEntity;
 import com.chaoku.modules.app.service.UserService;
 import com.chaoku.common.utils.R;
@@ -29,18 +30,18 @@ import java.util.Date;
 /**
  * 注册
  *
- * @author Mark sunlightcs@gmail.com
+ * @author chenguoku chenguoku@cgkhh1996@163.com
  */
 @RestController
-@RequestMapping("/app")
-@ApiIgnore
+@RequestMapping("/user")
+@Api(value = "AppRegisterController", tags = "APP注册接口")
 public class AppRegisterController {
     @Autowired
     private UserService userService;
 
     @PostMapping("register")
     @ApiOperation("注册")
-    public R register(@RequestBody RegisterForm form){
+    public Result register(@RequestBody RegisterForm form){
         //表单校验
         ValidatorUtils.validateEntity(form);
 
@@ -51,6 +52,6 @@ public class AppRegisterController {
 //        user.setCreateTime(new Date());
         userService.save(user);
 
-        return R.ok();
+        return new Result();
     }
 }

@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * APP登录授权
@@ -65,7 +67,10 @@ public class AppLoginController {
     @GetMapping(value = "login/check")
     @ApiOperation("检查登录是否过期")
     public Result checkLogin() {
-        return new Result().ok(true, "success");
+
+        Map map = new HashMap(2);
+        map.put("status",true);
+        return new Result().ok(map, "success");
     }
 
     /**
