@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.chaoku.common.utils.PageUtils;
 import com.chaoku.common.utils.Result;
 import com.chaoku.modules.app.entity.UserEntity;
-import com.chaoku.modules.app.form.LoginForm;
+import com.chaoku.modules.app.dto.user.LoginForm;
 
 import java.util.Map;
 
@@ -20,15 +20,6 @@ public interface UserService extends IService<UserEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     /**
-     * 小程序微信验证
-     *
-     * @return:
-     * @author: chenguoku
-     * @date: 2019/9/13
-     */
-    Result wechatLogin(LoginForm form);
-
-    /**
      * 根据用户名查询用户信息
      *
      * @return:
@@ -37,6 +28,15 @@ public interface UserService extends IService<UserEntity> {
      */
     UserEntity selectByName(String username);
 
+    /**
+     * 用户注册
+     *
+     * @param: userInfo
+     * @return: com.chaoku.common.utils.Result
+     * @author: chenguoku
+     * @date: 2019/10/10
+     */
+    Result register(String userInfo);
 
 }
 

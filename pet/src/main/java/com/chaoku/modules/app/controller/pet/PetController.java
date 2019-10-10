@@ -1,4 +1,4 @@
-package com.chaoku.modules.app.controller;
+package com.chaoku.modules.app.controller.pet;
 
 import com.chaoku.common.utils.Result;
 import com.chaoku.common.validator.ValidatorUtils;

@@ -8,14 +8,13 @@ import com.chaoku.common.utils.*;
 import com.chaoku.modules.app.dao.PetDao;
 import com.chaoku.modules.app.dao.UserDao;
 import com.chaoku.modules.app.entity.UserEntity;
-import com.chaoku.modules.app.form.LoginForm;
-import com.chaoku.modules.app.service.PetService;
-import com.chaoku.modules.app.service.UserPetService;
+import com.chaoku.modules.app.dto.user.LoginForm;
 import com.chaoku.modules.app.service.UserService;
 import com.chaoku.modules.app.vo.pet.PetVo;
 import com.chaoku.modules.app.vo.user.LoginVo;
 import com.chaoku.modules.app.vo.user.TokenMappingVo;
 import com.chaoku.modules.app.vo.user.UserVo;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -47,10 +46,9 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
     private RedisUtils redisUtils;
 
     @Autowired
-    private JwtUtils jwtUtils;
-
-    @Autowired
     private PetDao petDao;
+
+    private static final String GUEST = "guest";
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -62,71 +60,39 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
         return new PageUtils(page);
     }
 
-    /**
-     * 小程序微信验证
-     *
-     * @return:
-     * @author: chenguoku
-     * @date: 2019/9/13
-     */
-    @Override
-    public Result<LoginVo> wechatLogin(LoginForm form) {
-        LoginVo loginVo = new LoginVo();
-        TokenMappingVo tokenMappingVo = new TokenMappingVo();
-
-        //请求微信登录链接
-        Map<String, String> map = new HashMap<>();
-        map.put("appid", appId);
-        map.put("secret", secret);
-        map.put("js_code", form.getCode());
-        map.put("grant_type", grantType);
-        String s = HttpClientTool.doGet(wechatLoginUrl, map);
-        Map loginResultMap = JSON.parseObject(s, Map.class);
-
-        if (loginResultMap.get("session_key") == null) {
-            return new Result<LoginVo>().error("登录失败");
-        }
-
-        tokenMappingVo.setSessionKey(String.valueOf(loginResultMap.get("session_key")));
-        tokenMappingVo.setOpenId(String.valueOf(loginResultMap.get("openid")));
-
-        //判断userId是否为空
-        if (form.getUserId() != null) {
-            UserEntity userEntity = userService.getById(form.getUserId());
-            UserVo userVo = ConvertUtils.sourceToTarget(userEntity, UserVo.class);
-            loginVo.setUserVo(userVo);
-//            tokenMappingVo.setUserVo(userVo);
-
-            if (userEntity != null) {
-                PetVo petVo = petDao.getPetVo(userEntity.getId());
-                loginVo.setPetVo(petVo);
-//                tokenMappingVo.setPetVo(petVo);
-            }
-        }
-
-        //生成token
-        String token = getRandomToken();
-        loginVo.setToken(token);
-        redisUtils.set(token, tokenMappingVo);
-
-        return new Result<LoginVo>().ok(loginVo);
-    }
-
     @Override
     public UserEntity selectByName(String username) {
         QueryWrapper<UserEntity> queryWrapper = new QueryWrapper();
-        queryWrapper.eq("username",username);
+        queryWrapper.eq("username", username);
 
         List<UserEntity> list = this.list(queryWrapper);
-        if (list.size() > 0){
+        if (list.size() > 0) {
             return list.get(0);
         }
         return null;
     }
 
-    private String getRandomToken() {
-        String token = jwtUtils.generateToken(IdGenerator.defaultSnowflakeId());
-        return token;
-    }
+    /**
+     * 用户注册
+     *
+     * @param: userInfo
+     * @return: com.chaoku.common.utils.Result
+     * @author: chenguoku
+     * @date: 2019/10/10
+     */
+    @Override
+    public Result register(String userInfo) {
 
+        if (StringUtils.equals(GUEST, userInfo)) {
+            // 游客
+            UserEntity userEntity = new UserEntity();
+            boolean save = this.save(userEntity);
+
+        } else {
+            //授权用户
+            Map map = JSON.parseObject(userInfo, Map.class);
+        }
+
+        return null;
+    }
 }

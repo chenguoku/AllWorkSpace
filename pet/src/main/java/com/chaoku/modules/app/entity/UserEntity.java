@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author chenguoku
  * @email cgkhh1996@163.com
- * @date 2019-09-08 22:14:27
+ * @date 2019-10-10 20:42:14
  */
 @Data
 @TableName("tb_user")
@@ -44,6 +44,46 @@ public class UserEntity implements Serializable {
 	 * 钻石
 	 */
 	private Integer diamond;
+	/**
+	 * 昵称
+	 */
+	private String nickName;
+	/**
+	 * 性别
+	 */
+	private Integer gender;
+	/**
+	 * 语言
+	 */
+	private String language;
+	/**
+	 * 城市
+	 */
+	private String city;
+	/**
+	 * 省会
+	 */
+	private String province;
+	/**
+	 * 国家
+	 */
+	private String country;
+	/**
+	 * 头像
+	 */
+	private String avatarUrl;
+	/**
+	 * 微信唯一Id
+	 */
+	private String unionId;
+	/**
+	 * 微信水印(watermark) 时间戳
+	 */
+	private Long timestamp;
+	/**
+	 * 微信水印(watermark) appId
+	 */
+	private String appid;
 	/**
 	 * 乐观锁
 	 */

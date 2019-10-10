@@ -6,14 +6,14 @@
  * 版权所有，侵权必究！
  */
 
-package com.chaoku.modules.app.controller;
+package com.chaoku.modules.app.controller.user;
 
 
 import com.alibaba.fastjson.JSON;
 import com.chaoku.common.utils.RedisUtils;
 import com.chaoku.common.utils.Result;
 import com.chaoku.modules.app.dao.PetDao;
-import com.chaoku.modules.app.form.LoginForm;
+import com.chaoku.modules.app.dto.user.LoginForm;
 import com.chaoku.modules.app.service.UserService;
 import com.chaoku.modules.app.vo.pet.PetVo;
 import com.chaoku.modules.app.vo.user.UserVo;
