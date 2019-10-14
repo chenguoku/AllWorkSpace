@@ -25,7 +25,6 @@ import java.util.Arrays;
 @Slf4j
 public class WechatUtils {
 
-
     /**
      * 微信小程序解密用户敏感数据获取用户信息
      *
@@ -34,7 +33,7 @@ public class WechatUtils {
      * @param iv            加密算法的初始向量
      * @return
      */
-    public String getUserInfo(String encryptedData, String sessionKey, String iv) {
+    public static String getUserInfo(String encryptedData, String sessionKey, String iv) {
         String result = "";
         // 被加密的数据
         byte[] dataByte = Base64.decode(encryptedData);

@@ -43,7 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
     @Autowired
     private PetDao petDao;
 
-    private static final String GUEST = "guest";
+    public static final String GUEST = "guest";
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -85,7 +85,6 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
         if (StringUtils.equals(GUEST, userInfo)) {
             // 游客
             userEntity.setNickName(UUID.fastUUID().toString().split("-")[0]);
-
         } else {
             //授权用户
             Map map = JSON.parseObject(userInfo, Map.class);
@@ -122,10 +121,17 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
                     userEntity.setAppid(String.valueOf(watermark.get("appid")));
                 }
             }
+
         }
 
         boolean save = this.save(userEntity);
-        return new Result().ok(save);
+
+        if (save) {
+            return new Result().ok(userEntity);
+        } else {
+            return new Result().error("Registration failed");
+        }
+
     }
 
 }

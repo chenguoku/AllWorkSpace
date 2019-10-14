@@ -40,9 +40,6 @@ import java.util.Map;
 public class AppLoginController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private RedisUtils redisUtils;
 
     @Autowired
