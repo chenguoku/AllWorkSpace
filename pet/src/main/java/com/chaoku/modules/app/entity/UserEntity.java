@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author chenguoku
  * @email cgkhh1996@163.com
- * @date 2019-10-10 20:42:14
+ * @date 2019-10-18 00:00:02
  */
 @Data
 @TableName("tb_user")
@@ -44,6 +44,10 @@ public class UserEntity implements Serializable {
 	 * 钻石
 	 */
 	private Integer diamond;
+	/**
+	 * 食物面包
+	 */
+	private Integer foodBread;
 	/**
 	 * 昵称
 	 */

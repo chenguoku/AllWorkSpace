@@ -1,11 +1,13 @@
 package com.chaoku.modules.app.service.impl;
 
+import com.chaoku.common.utils.RedisUtils;
 import com.chaoku.common.utils.Result;
 import com.chaoku.modules.app.dao.PetDao;
 import com.chaoku.modules.app.dto.pet.ActionEatDto;
 import com.chaoku.modules.app.entity.PetEntity;
 import com.chaoku.modules.app.service.PetService;
 import com.chaoku.modules.app.vo.pet.PetVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -19,6 +21,9 @@ import com.chaoku.common.utils.Query;
 
 @Service("petService")
 public class PetServiceImpl extends ServiceImpl<PetDao, PetEntity> implements PetService {
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {

@@ -20,6 +20,13 @@ public interface PetService extends IService<PetEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
 
+    /**
+     * 喂食的service
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/17
+     */
     Result actionEat(ActionEatDto dto);
 
 }
