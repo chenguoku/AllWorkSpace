@@ -47,20 +47,20 @@ public class PetVo {
     @ApiModelProperty(value = "经验值")
     private Integer experience;
     /**
-     * 饥饿值
+     * 饥饿值上线
      */
-    @ApiModelProperty(value = "饥饿值")
-    private Integer hungerNum;
+    @ApiModelProperty(value = "饥饿值上线")
+    private Integer hungerNumLimit;
     /**
-     * 清洁值
+     * 清洁值上线
      */
-    @ApiModelProperty(value = "清洁值")
-    private Integer cleanNum;
+    @ApiModelProperty(value = "清洁值上线")
+    private Integer cleanNumLimit;
     /**
-     * 心情值
+     * 心情值上线
      */
-    @ApiModelProperty(value = "心情值")
-    private Integer moodNum;
+    @ApiModelProperty(value = "心情值上线")
+    private Integer moodNumLimit;
     /**
      * 类别
      */

@@ -11,9 +11,9 @@
         <result property="nickname" column="nickname"/>
         <result property="level" column="level"/>
         <result property="experience" column="experience"/>
-        <result property="hungerNum" column="hunger_num"/>
-        <result property="cleanNum" column="clean_num"/>
-        <result property="moodNum" column="mood_num"/>
+        <result property="hungerNumLimit" column="hunger_num_limit"/>
+        <result property="cleanNumLimit" column="clean_num_limit"/>
+        <result property="moodNumLimit" column="mood_num_limit"/>
         <result property="version" column="version"/>
         <result property="creator" column="creator"/>
         <result property="createDate" column="create_date"/>
