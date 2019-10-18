@@ -45,6 +45,13 @@ public class AppLoginController {
     @Autowired
     private PetDao petDao;
 
+    @GetMapping("test")
+    @ApiOperation("测试")
+    public void test(){
+        Long expire = redisUtils.getExpire("111");
+        System.out.println(expire);
+    }
+
     /**
      * 登录
      */
