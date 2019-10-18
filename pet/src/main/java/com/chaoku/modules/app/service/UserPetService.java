@@ -16,5 +16,7 @@ import java.util.Map;
 public interface UserPetService extends IService<UserPetEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    UserPetEntity selectByUserId(Long userId);
 }
 
