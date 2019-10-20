@@ -51,7 +51,7 @@ public class TokenCheckFilter extends OncePerRequestFilter {
             String url = httpServletRequest.getRequestURI();
             String method = httpServletRequest.getMethod();
 
-            if (!StringUtils.equals(url, "/user/login") && !StringUtils.equals(method, "POST")) {
+            if (!(StringUtils.equals(url, "/user/login") && StringUtils.equals(method, "POST"))) {
                 String token = httpServletRequest.getHeader("token");
                 if (token == null || StringUtils.isEmpty(token)) {
                     httpServletResponse.getWriter().write(JSON.toJSONString(new Result<>().error("Token cannot be null!")));

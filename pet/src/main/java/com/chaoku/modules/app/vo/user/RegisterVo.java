@@ -20,6 +20,6 @@ public class RegisterVo {
     private Boolean status;
 
     @ApiModelProperty("游戏的数据")
-    private PetVo gameData;
+    private Long userId;
 
 }

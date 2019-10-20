@@ -8,8 +8,8 @@
 
 package com.chaoku.common.aspect;
 
+import com.alibaba.fastjson.JSON;
 import com.chaoku.common.annotation.SysLog;
-import com.google.gson.Gson;
 import com.chaoku.common.utils.HttpContextUtils;
 import com.chaoku.common.utils.IPUtils;
 import com.chaoku.modules.sys.entity.SysLogEntity;
@@ -78,7 +78,7 @@ public class SysLogAspect {
 		//请求的参数
 		Object[] args = joinPoint.getArgs();
 		try{
-			String params = new Gson().toJson(args);
+			String params = JSON.toJSONString(args);
 			sysLog.setParams(params);
 		}catch (Exception e){
 

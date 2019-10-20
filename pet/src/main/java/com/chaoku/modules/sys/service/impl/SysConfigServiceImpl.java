@@ -8,6 +8,7 @@
 
 package com.chaoku.modules.sys.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,7 +16,6 @@ import com.chaoku.common.exception.RRException;
 import com.chaoku.common.utils.PageUtils;
 import com.chaoku.common.utils.Query;
 import com.chaoku.modules.sys.dao.SysConfigDao;
-import com.google.gson.Gson;
 import com.chaoku.modules.sys.entity.SysConfigEntity;
 import com.chaoku.modules.sys.redis.SysConfigRedis;
 import com.chaoku.modules.sys.service.SysConfigService;
@@ -23,6 +23,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import springfox.documentation.spring.web.plugins.JacksonSerializerConvention;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -92,7 +93,7 @@ public class SysConfigServiceImpl extends ServiceImpl<SysConfigDao, SysConfigEnt
 	public <T> T getConfigObject(String key, Class<T> clazz) {
 		String value = getValue(key);
 		if(StringUtils.isNotBlank(value)){
-			return new Gson().fromJson(value, clazz);
+			return JSON.parseObject(value,clazz);
 		}
 
 		try {

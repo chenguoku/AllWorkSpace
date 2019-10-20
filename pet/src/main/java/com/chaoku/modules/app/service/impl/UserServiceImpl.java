@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +68,18 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
         return null;
     }
 
+    public static void main(String[] args) {
+        Map map = new HashMap();
+        map.put("nickName","超");
+        map.put("gender",1);
+        map.put("language","zh_CN");
+        map.put("city","Harbin");
+        map.put("province","Heilongjiang");
+        map.put("country","China");
+        map.put("avatarUrl","https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epmCq4sgniatGv7zZiaXVKqZNqy8exqVqNUJYr9uphK3FQPGKz3ONrTicoqJibWnsnDu2DkspaGgUoEQw/132");
+        System.out.println(JSON.toJSONString(map));
+    }
+
     /**
      * 用户注册
      *
@@ -80,6 +93,7 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
         UserEntity userEntity = new UserEntity();
         Long id = IdGenerator.defaultSnowflakeId();
         userEntity.setId(id);
+        userEntity.setFoodBread(10);
         userEntity.setPetCurrency(0);
         userEntity.setDiamond(0);
         if (StringUtils.equals(GUEST, userInfo)) {
@@ -109,8 +123,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
             if (map.get("avatarUrl") != null) {
                 userEntity.setAvatarUrl(String.valueOf(map.get("avatarUrl")));
             }
-            if (map.get("unionId") != null) {
-                userEntity.setUnionId(String.valueOf(map.get("unionId")));
+            if (map.get("openId") != null) {
+                userEntity.setUnionId(String.valueOf(map.get("openId")));
             }
             if (map.get("watermark") != null) {
                 Map watermark = (Map) map.get("watermark");

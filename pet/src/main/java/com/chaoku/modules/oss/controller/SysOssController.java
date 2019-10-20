@@ -8,7 +8,7 @@
 
 package com.chaoku.modules.oss.controller;
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.chaoku.common.exception.RRException;
 import com.chaoku.common.utils.ConfigConstant;
 import com.chaoku.common.utils.Constant;
@@ -27,6 +27,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.spring.web.plugins.JacksonSerializerConvention;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -91,7 +92,7 @@ public class SysOssController {
 			ValidatorUtils.validateEntity(config, QcloudGroup.class);
 		}
 
-        sysConfigService.updateValueByKey(KEY, new Gson().toJson(config));
+        sysConfigService.updateValueByKey(KEY, JSON.toJSONString(config));
 
 		return R.ok();
 	}

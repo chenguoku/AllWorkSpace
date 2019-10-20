@@ -57,9 +57,21 @@ public class UserPetServiceImpl extends ServiceImpl<UserPetDao, UserPetEntity> i
         Long cleanExpire = redisUtils.getExpire(RedisKeys.getCleanNum(String.valueOf(userId)));
         Long moodExpire = redisUtils.getExpire(RedisKeys.getMoodNum(String.valueOf(userId)));
 
-        petVo.setHungerNum(RedisNumberParse.parseHungerExpire(hungerExpire));
-        petVo.setCleanNum(RedisNumberParse.parseCleanExpire(cleanExpire));
-        petVo.setMoodNum(RedisNumberParse.parseMoodExpire(moodExpire));
+        if (hungerExpire > 0){
+            petVo.setHungerNum(RedisNumberParse.parseHungerExpire(hungerExpire));
+        }else {
+            petVo.setHungerNum(0);
+        }
+        if (cleanExpire > 0){
+            petVo.setCleanNum(RedisNumberParse.parseCleanExpire(cleanExpire));
+        }else {
+            petVo.setCleanNum(0);
+        }
+        if (moodExpire > 0){
+            petVo.setMoodNum(RedisNumberParse.parseMoodExpire(moodExpire));
+        }else {
+            petVo.setMoodNum(0);
+        }
 
         return petVo;
     }

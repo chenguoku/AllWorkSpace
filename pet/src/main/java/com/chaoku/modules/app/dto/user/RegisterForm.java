@@ -12,7 +12,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import java.util.Map;
 
 /**
  * 注册表单
@@ -24,7 +25,13 @@ import javax.validation.constraints.NotBlank;
 public class RegisterForm {
 
     @ApiModelProperty(value = "用户信息")
-    @NotBlank(message = "用户信息不能为空")
-    private String userInfo;
+    @NotEmpty(message = "用户信息不能为空")
+    private Map userInfo;
+
+    private String signature;
+
+    private String encryptedData;
+
+    private String iv;
 
 }

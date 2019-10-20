@@ -1,5 +1,6 @@
 package com.chaoku.modules.app.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -22,7 +23,7 @@ public class UserEntity implements Serializable {
 	/**
 	 * 用户id
 	 */
-	@TableId
+	@TableId(value = "id",type = IdType.INPUT)
 	private Long id;
 	/**
 	 * 用户姓名
