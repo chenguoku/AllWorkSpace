@@ -3,6 +3,7 @@ package com.chaoku.modules.app.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chaoku.common.utils.PageUtils;
 import com.chaoku.modules.app.entity.UserPetEntity;
+import com.chaoku.modules.app.vo.pet.PetVo;
 
 import java.util.Map;
 
@@ -18,5 +19,7 @@ public interface UserPetService extends IService<UserPetEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     UserPetEntity selectByUserId(Long userId);
+
+    PetVo getUserPetData(Long userId);
 }
 

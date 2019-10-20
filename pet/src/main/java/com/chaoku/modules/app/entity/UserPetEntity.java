@@ -12,7 +12,7 @@ import lombok.Data;
  * 
  * @author chenguoku
  * @email cgkhh1996@163.com
- * @date 2019-10-18 17:50:36
+ * @date 2019-10-20 14:31:38
  */
 @Data
 @TableName("tb_user_pet")
@@ -44,6 +44,10 @@ public class UserPetEntity implements Serializable {
 	 * 经验值
 	 */
 	private Integer experience;
+	/**
+	 * 经验值上线
+	 */
+	private Integer experienceNumLimit;
 	/**
 	 * 饥饿值上线
 	 */

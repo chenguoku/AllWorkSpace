@@ -40,6 +40,18 @@ public class RedisNumberParse {
     }
 
     /**
+     * 解析出 饥饿值
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/20
+     */
+    public static Integer parseHungerExpire(Long expire) {
+        double ceil = Math.ceil(expire / HUNGER_TIME_MAPPING);
+        return Integer.parseInt(String.valueOf(ceil));
+    }
+
+    /**
      * 获取清洁值 过期时间
      *
      * @param: cleanNum
@@ -50,6 +62,18 @@ public class RedisNumberParse {
     public static Long getCleanExpire(Integer cleanNum) {
         int i = cleanNum * CLEAN_TIME_MAPPING;
         return Long.parseLong(String.valueOf(i));
+    }
+
+    /**
+     * 解析出 清洁值
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/20
+     */
+    public static Integer parseCleanExpire(Long expire) {
+        double ceil = Math.ceil(expire / CLEAN_TIME_MAPPING);
+        return Integer.parseInt(String.valueOf(ceil));
     }
 
     /**
@@ -65,4 +89,15 @@ public class RedisNumberParse {
         return Long.parseLong(String.valueOf(i));
     }
 
+    /**
+     * 解析出 心情值
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/20
+     */
+    public static Integer parseMoodExpire(Long expire) {
+        double ceil = Math.ceil(expire / MOOD_TIME_MAPPING);
+        return Integer.parseInt(String.valueOf(ceil));
+    }
 }

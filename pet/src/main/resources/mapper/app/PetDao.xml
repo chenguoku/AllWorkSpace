@@ -35,6 +35,7 @@
           u.nickname nickname,
           u.level level,
           u.experience experience,
+          u.experience_num_limit experience_num_limit,
           u.hunger_num_limit hunger_num_limit,
           u.clean_num_limit clean_num_limit,
           u.mood_num_limit mood_num_limit,

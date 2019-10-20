@@ -1,6 +1,5 @@
 package com.chaoku.modules.app.vo.pet;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -46,6 +45,11 @@ public class PetVo {
      */
     @ApiModelProperty(value = "经验值")
     private Integer experience;
+    /**
+     * 经验值上线
+     */
+    @ApiModelProperty(value = "经验值上线")
+    private Integer experienceNumLimit;
     /**
      * 饥饿值上线
      */
@@ -106,5 +110,19 @@ public class PetVo {
      */
     @ApiModelProperty(value = "难过动作")
     private String action7;
-
+    /**
+     * 饥饿值
+     */
+    @ApiModelProperty(value = "难过动作")
+    private Integer hungerNum;
+    /**
+     * 清洁值
+     */
+    @ApiModelProperty(value = "难过动作")
+    private Integer cleanNum;
+    /**
+     * 心情值
+     */
+    @ApiModelProperty(value = "难过动作")
+    private Integer moodNum;
 }

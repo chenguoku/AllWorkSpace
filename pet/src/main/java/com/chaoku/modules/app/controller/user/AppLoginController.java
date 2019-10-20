@@ -12,9 +12,8 @@ package com.chaoku.modules.app.controller.user;
 import com.alibaba.fastjson.JSON;
 import com.chaoku.common.utils.RedisUtils;
 import com.chaoku.common.utils.Result;
-import com.chaoku.modules.app.dao.PetDao;
 import com.chaoku.modules.app.dto.user.LoginForm;
-import com.chaoku.modules.app.service.UserService;
+import com.chaoku.modules.app.service.UserPetService;
 import com.chaoku.modules.app.vo.pet.PetVo;
 import com.chaoku.modules.app.vo.user.UserVo;
 import io.swagger.annotations.Api;
@@ -43,11 +42,11 @@ public class AppLoginController {
     private RedisUtils redisUtils;
 
     @Autowired
-    private PetDao petDao;
+    private UserPetService userPetService;
 
     @GetMapping("test")
     @ApiOperation("测试")
-    public void test(){
+    public void test() {
         Long expire = redisUtils.getExpire("111");
         System.out.println(expire);
     }
@@ -73,7 +72,7 @@ public class AppLoginController {
     public Result checkLogin() {
 
         Map map = new HashMap(2);
-        map.put("status",true);
+        map.put("status", true);
         return new Result().ok(map, "success");
     }
 
@@ -92,7 +91,7 @@ public class AppLoginController {
         String userString = String.valueOf(redisUtils.hGet(token, "userVo"));
         UserVo userVo = JSON.parseObject(userString, UserVo.class);
 
-        PetVo petVo = petDao.getPetVo(userVo.getId());
+        PetVo petVo = userPetService.getUserPetData(userVo.getId());
 
         return new Result().ok(petVo);
     }
