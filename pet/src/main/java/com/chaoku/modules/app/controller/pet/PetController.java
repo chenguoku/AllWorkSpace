@@ -4,6 +4,7 @@ import com.chaoku.common.utils.Result;
 import com.chaoku.common.validator.ValidatorUtils;
 import com.chaoku.modules.app.dto.pet.ActionEatDto;
 import com.chaoku.modules.app.dto.pet.ActionShowerDto;
+import com.chaoku.modules.app.dto.pet.AdoptPetDto;
 import com.chaoku.modules.app.service.PetService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -70,6 +71,20 @@ public class PetController {
     @ApiOperation("获取宠物列表接口")
     public Result listPet() {
         Result result = petService.listPet();
+        return result;
+    }
+
+    /**
+     * 领养宠物
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/31
+     */
+    @PostMapping("adopt")
+    @ApiOperation("领养宠物")
+    public Result getadoptPet(@RequestBody AdoptPetDto dto) {
+        Result result = petService.getadoptPet(dto);
         return result;
     }
 

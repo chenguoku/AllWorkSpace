@@ -7,6 +7,7 @@ import com.chaoku.common.utils.*;
 import com.chaoku.modules.app.dao.PetDao;
 import com.chaoku.modules.app.dto.pet.ActionEatDto;
 import com.chaoku.modules.app.dto.pet.ActionShowerDto;
+import com.chaoku.modules.app.dto.pet.AdoptPetDto;
 import com.chaoku.modules.app.entity.LevelAlgorithmEntity;
 import com.chaoku.modules.app.entity.PetEntity;
 import com.chaoku.modules.app.entity.UserEntity;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -161,6 +163,34 @@ public class PetServiceImpl extends ServiceImpl<PetDao, PetEntity> implements Pe
         }
 
         return new Result().ok(resultList);
+    }
+
+    /**
+     * 领养宠物
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/31
+     */
+    @Override
+    public Result getadoptPet(AdoptPetDto dto) {
+        PetEntity petEntity = this.getById(dto.getPetId());
+
+        UserPetEntity userPetEntity = new UserPetEntity();
+        userPetEntity.setId(IdGenerator.defaultSnowflakeId());
+        userPetEntity.setNickname(dto.getPetNickName());
+        userPetEntity.setLevel(1);
+        userPetEntity.setExperience(0);
+        userPetEntity.setExperienceNumLimit(CommonUtils.getExperienceLimit(1));
+        userPetEntity.setHungerNumLimit(CommonUtils.getHungerLimit(1));
+        userPetEntity.setCleanNumLimit(CommonUtils.getCleanLimit(1));
+        userPetEntity.setMoodNumLimit(CommonUtils.getMoodLimit(1));
+
+        userPetService.save(userPetEntity);
+
+        Map map = new HashMap();
+        map.put("status", true);
+        return new Result().ok(map);
     }
 
     /**
