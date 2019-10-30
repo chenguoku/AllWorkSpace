@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.chaoku.common.utils.PageUtils;
 import com.chaoku.common.utils.Result;
 import com.chaoku.modules.app.dto.pet.ActionEatDto;
+import com.chaoku.modules.app.dto.pet.ActionShowerDto;
 import com.chaoku.modules.app.entity.PetEntity;
 import com.chaoku.modules.app.vo.pet.PetVo;
 
@@ -28,6 +29,15 @@ public interface PetService extends IService<PetEntity> {
      * @date: 2019/10/17
      */
     Result actionEat(ActionEatDto dto);
+
+    /**
+     * 洗澡的service
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/30
+     */
+    Result actionEat(ActionShowerDto dto);
 
 }
 

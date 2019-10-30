@@ -50,6 +50,10 @@ public class UserEntity implements Serializable {
 	 */
 	private Integer foodBread;
 	/**
+	 * 洗澡_香皂
+	 */
+	private Integer showerSoap;
+	/**
 	 * 昵称
 	 */
 	private String nickName;

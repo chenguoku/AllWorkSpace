@@ -3,6 +3,7 @@ package com.chaoku.modules.app.controller.pet;
 import com.chaoku.common.utils.Result;
 import com.chaoku.common.validator.ValidatorUtils;
 import com.chaoku.modules.app.dto.pet.ActionEatDto;
+import com.chaoku.modules.app.dto.pet.ActionShowerDto;
 import com.chaoku.modules.app.service.PetService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,6 +38,23 @@ public class PetController {
     @PostMapping("action/eat")
     @ApiOperation("喂食")
     public Result actionEat(@RequestBody ActionEatDto dto){
+        ValidatorUtils.validateEntity(dto);
+
+        Result result = petService.actionEat(dto);
+
+        return result;
+    }
+
+    /**
+     * 洗澡
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/30
+     */
+    @PostMapping("action/shower")
+    @ApiOperation("洗澡")
+    public Result actionShower(@RequestBody ActionShowerDto dto){
         ValidatorUtils.validateEntity(dto);
 
         Result result = petService.actionEat(dto);
