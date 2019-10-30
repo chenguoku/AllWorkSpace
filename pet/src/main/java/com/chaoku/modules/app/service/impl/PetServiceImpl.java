@@ -14,10 +14,13 @@ import com.chaoku.modules.app.entity.UserPetEntity;
 import com.chaoku.modules.app.service.PetService;
 import com.chaoku.modules.app.service.UserPetService;
 import com.chaoku.modules.app.service.UserService;
+import com.chaoku.modules.app.vo.pet.PetTypeVo;
 import com.chaoku.modules.app.vo.pet.PetVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -133,6 +136,31 @@ public class PetServiceImpl extends ServiceImpl<PetDao, PetEntity> implements Pe
 
         PetVo userPetData = userPetService.getUserPetData(Long.parseLong(userId));
         return new Result().ok(userPetData);
+    }
+
+    /**
+     * 获取宠物列表接口
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/30
+     */
+    @Override
+    public Result listPet() {
+        List<PetTypeVo> resultList = new ArrayList<>();
+        List<PetEntity> list = this.list();
+
+        for (PetEntity petEntity : list) {
+            PetTypeVo petTypeVo = new PetTypeVo();
+            petTypeVo.setId(petEntity.getId());
+            petTypeVo.setName(petEntity.getName());
+            petTypeVo.setType(petEntity.getType());
+            petTypeVo.setPicture(petEntity.getPicture());
+
+            resultList.add(petTypeVo);
+        }
+
+        return new Result().ok(resultList);
     }
 
     /**

@@ -33,6 +33,10 @@ public class PetEntity implements Serializable {
 	 */
 	private String name;
 	/**
+	 * 宠物图片
+	 */
+	private String picture;
+	/**
 	 * 坐着动作
 	 */
 	private String action1;

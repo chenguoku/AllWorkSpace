@@ -8,10 +8,7 @@ import com.chaoku.modules.app.service.PetService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author chenguoku
@@ -37,7 +34,7 @@ public class PetController {
      */
     @PostMapping("action/eat")
     @ApiOperation("喂食")
-    public Result actionEat(@RequestBody ActionEatDto dto){
+    public Result actionEat(@RequestBody ActionEatDto dto) {
         ValidatorUtils.validateEntity(dto);
 
         Result result = petService.actionEat(dto);
@@ -54,11 +51,25 @@ public class PetController {
      */
     @PostMapping("action/shower")
     @ApiOperation("洗澡")
-    public Result actionShower(@RequestBody ActionShowerDto dto){
+    public Result actionShower(@RequestBody ActionShowerDto dto) {
         ValidatorUtils.validateEntity(dto);
 
         Result result = petService.actionEat(dto);
 
+        return result;
+    }
+
+    /**
+     * 获取宠物列表接口
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/30
+     */
+    @GetMapping("list")
+    @ApiOperation("获取宠物列表接口")
+    public Result listPet() {
+        Result result = petService.listPet();
         return result;
     }
 

@@ -39,5 +39,14 @@ public interface PetService extends IService<PetEntity> {
      */
     Result actionEat(ActionShowerDto dto);
 
+    /**
+     * 获取宠物列表接口
+     *
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/30
+     */
+    Result listPet();
+
 }
 
