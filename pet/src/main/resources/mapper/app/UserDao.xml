@@ -12,6 +12,7 @@
         <result property="petCurrency" column="pet_currency"/>
         <result property="diamond" column="diamond"/>
         <result property="foodBread" column="food_bread"/>
+        <result property="showerSoap" column="shower_soap"/>
         <result property="nickName" column="nick_name"/>
         <result property="gender" column="gender"/>
         <result property="language" column="language"/>

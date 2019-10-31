@@ -8,6 +8,7 @@
         <result property="id" column="id"/>
         <result property="type" column="type"/>
         <result property="name" column="name"/>
+        <result property="picture" column="picture"/>
         <result property="action1" column="action1"/>
         <result property="action2" column="action2"/>
         <result property="action3" column="action3"/>
