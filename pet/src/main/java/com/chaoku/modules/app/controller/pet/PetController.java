@@ -1,15 +1,20 @@
 package com.chaoku.modules.app.controller.pet;
 
+import com.alibaba.fastjson.JSON;
+import com.chaoku.common.utils.RedisUtils;
 import com.chaoku.common.utils.Result;
 import com.chaoku.common.validator.ValidatorUtils;
 import com.chaoku.modules.app.dto.pet.ActionEatDto;
 import com.chaoku.modules.app.dto.pet.ActionShowerDto;
 import com.chaoku.modules.app.dto.pet.AdoptPetDto;
 import com.chaoku.modules.app.service.PetService;
+import com.chaoku.modules.app.vo.user.UserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author chenguoku
@@ -25,6 +30,9 @@ public class PetController {
 
     @Autowired
     private PetService petService;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     /**
      * 喂食
@@ -83,7 +91,11 @@ public class PetController {
      */
     @PostMapping("adopt")
     @ApiOperation("领养宠物")
-    public Result getadoptPet(@RequestBody AdoptPetDto dto) {
+    public Result getadoptPet(@RequestBody AdoptPetDto dto, HttpServletRequest request) {
+        String token = request.getHeader("token");
+        String userString = String.valueOf(redisUtils.hGet(token, "userVo"));
+        UserVo userVo = JSON.parseObject(userString, UserVo.class);
+        dto.setUserId(userVo.getId());
         Result result = petService.getadoptPet(dto);
         return result;
     }

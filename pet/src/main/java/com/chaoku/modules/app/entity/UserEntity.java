@@ -54,6 +54,15 @@ public class UserEntity implements Serializable {
 	 */
 	private Integer showerSoap;
 	/**
+	 * 每日回答问题限制
+	 */
+	private Integer questionLimit;
+	/**
+	 * 回答正确问题总数
+	 */
+	private Integer questionNum;
+
+	/**
 	 * 昵称
 	 */
 	private String nickName;

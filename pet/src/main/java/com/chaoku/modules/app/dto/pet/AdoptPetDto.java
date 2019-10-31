@@ -21,4 +21,7 @@ public class AdoptPetDto {
     @ApiModelProperty("宠物昵称")
     private String petNickName;
 
+    @ApiModelProperty(hidden = true)
+    private Long userId;
+
 }

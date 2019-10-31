@@ -178,6 +178,8 @@ public class PetServiceImpl extends ServiceImpl<PetDao, PetEntity> implements Pe
 
         UserPetEntity userPetEntity = new UserPetEntity();
         userPetEntity.setId(IdGenerator.defaultSnowflakeId());
+        userPetEntity.setUserId(dto.getUserId());
+        userPetEntity.setPetId(dto.getPetId());
         userPetEntity.setNickname(dto.getPetNickName());
         userPetEntity.setLevel(1);
         userPetEntity.setExperience(0);
