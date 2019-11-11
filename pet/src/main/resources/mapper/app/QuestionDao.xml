@@ -19,6 +19,25 @@
         <result property="updateDate" column="update_date"/>
         <result property="delFlag" column="del_flag"/>
     </resultMap>
+    <select id="getRandomQuestion" resultType="com.chaoku.modules.app.entity.QuestionEntity" parameterType="integer">
+        SELECT t1.id,t1.title,t1.option_a,t1.option_b,t1.option_c,t1.option_d,t1.answer,t1.version,t1.creator,t1.create_date,t1.updater,t1.update_date,t1.del_flag
+        FROM tb_question t1
+            JOIN (
+                SELECT ROUND(RAND() * ((
+                        SELECT MAX(id)
+                        FROM tb_question
+                    ) - (
+                        SELECT MIN(id)
+                        FROM tb_question
+                    )) + (
+                        SELECT MIN(id)
+                        FROM tb_question
+                    )) AS id
+            ) t2
+        WHERE t1.id >= t2.id
+        ORDER BY t1.id
+        LIMIT #{num};
+    </select>
 
 
 </mapper>
