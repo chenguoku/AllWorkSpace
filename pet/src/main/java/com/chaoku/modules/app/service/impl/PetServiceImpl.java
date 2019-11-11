@@ -8,7 +8,6 @@ import com.chaoku.modules.app.dao.PetDao;
 import com.chaoku.modules.app.dto.pet.ActionEatDto;
 import com.chaoku.modules.app.dto.pet.ActionShowerDto;
 import com.chaoku.modules.app.dto.pet.AdoptPetDto;
-import com.chaoku.modules.app.entity.LevelAlgorithmEntity;
 import com.chaoku.modules.app.entity.PetEntity;
 import com.chaoku.modules.app.entity.UserEntity;
 import com.chaoku.modules.app.entity.UserPetEntity;
@@ -88,7 +87,8 @@ public class PetServiceImpl extends ServiceImpl<PetDao, PetEntity> implements Pe
         redisUtils.set(RedisKeys.getMoodNum(userId), 1, moodExpireTime);
 
         //5.增加经验值,并判断是否升级
-        addExperience(props, userPetEntity);
+        CommonUtils.addExperience(props, userPetEntity);
+        userPetService.updateById(userPetEntity);
 
         PetVo userPetData = userPetService.getUserPetData(Long.parseLong(userId));
         return new Result().ok(userPetData);
@@ -134,7 +134,8 @@ public class PetServiceImpl extends ServiceImpl<PetDao, PetEntity> implements Pe
         redisUtils.set(RedisKeys.getMoodNum(userId), 1, moodExpireTime);
 
         //5.增加经验值,并判断是否升级
-        addExperience(props, userPetEntity);
+        CommonUtils.addExperience(props, userPetEntity);
+        userPetService.updateById(userPetEntity);
 
         PetVo userPetData = userPetService.getUserPetData(Long.parseLong(userId));
         return new Result().ok(userPetData);
@@ -310,43 +311,6 @@ public class PetServiceImpl extends ServiceImpl<PetDao, PetEntity> implements Pe
         }
 
         return expireTime;
-    }
-
-    /**
-     * 增加经验
-     *
-     * @param experience    经验
-     * @param userPetEntity 用户宠物的实体类
-     * @return:
-     * @author: chenguoku
-     * @date: 2019/10/20
-     */
-    private void addExperience(Integer experience, UserPetEntity userPetEntity) {
-
-        if (userPetEntity.getExperienceNumLimit() >= (experience + userPetEntity.getExperience())) {
-            //不升级
-            userPetEntity.setExperience(userPetEntity.getExperience() + experience);
-
-        } else {
-            //升级
-            //获取涨了几级 和 升完级 剩多少经验
-            LevelAlgorithmEntity levelAlgorithmEntity = new LevelAlgorithmEntity();
-            levelAlgorithmEntity.setLevel(userPetEntity.getLevel());
-            levelAlgorithmEntity.setExperience(experience);
-            levelAlgorithmEntity.setCurrentExperience(userPetEntity.getExperience());
-            LevelAlgorithmEntity levelAlgorithm = CommonUtils.getLevelAlgorithm(levelAlgorithmEntity);
-
-            userPetEntity.setLevel(levelAlgorithm.getLevel());
-            userPetEntity.setExperience(levelAlgorithm.getCurrentExperience());
-
-            Integer level = userPetEntity.getLevel();
-            userPetEntity.setExperienceNumLimit(CommonUtils.getExperienceLimit(level));
-            userPetEntity.setHungerNumLimit(CommonUtils.getHungerLimit(level));
-            userPetEntity.setCleanNumLimit(CommonUtils.getCleanLimit(level));
-            userPetEntity.setMoodNumLimit(CommonUtils.getMoodLimit(level));
-        }
-
-        userPetService.updateById(userPetEntity);
     }
 
 

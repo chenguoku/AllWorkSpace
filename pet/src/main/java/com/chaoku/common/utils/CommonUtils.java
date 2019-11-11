@@ -1,6 +1,7 @@
 package com.chaoku.common.utils;
 
 import com.chaoku.modules.app.entity.LevelAlgorithmEntity;
+import com.chaoku.modules.app.entity.UserPetEntity;
 
 /**
  * @author chenguoku
@@ -11,6 +12,63 @@ import com.chaoku.modules.app.entity.LevelAlgorithmEntity;
  */
 public class CommonUtils {
 
+    /**
+     * 增加经验
+     *
+     * @param experience    经验
+     * @param userPetEntity 用户宠物的实体类
+     * @return:
+     * @author: chenguoku
+     * @date: 2019/10/20
+     */
+    public static void addExperience(Integer experience, UserPetEntity userPetEntity) {
+
+        if (userPetEntity.getExperienceNumLimit() >= (experience + userPetEntity.getExperience())) {
+            //不升级
+            userPetEntity.setExperience(userPetEntity.getExperience() + experience);
+
+        } else {
+            //升级
+            //获取涨了几级 和 升完级 剩多少经验
+            LevelAlgorithmEntity levelAlgorithmEntity = new LevelAlgorithmEntity();
+            levelAlgorithmEntity.setLevel(userPetEntity.getLevel());
+            levelAlgorithmEntity.setExperience(experience);
+            levelAlgorithmEntity.setCurrentExperience(userPetEntity.getExperience());
+            LevelAlgorithmEntity levelAlgorithm = CommonUtils.getLevelAlgorithm(levelAlgorithmEntity);
+
+            userPetEntity.setLevel(levelAlgorithm.getLevel());
+            userPetEntity.setExperience(levelAlgorithm.getCurrentExperience());
+
+            Integer level = userPetEntity.getLevel();
+            userPetEntity.setExperienceNumLimit(CommonUtils.getExperienceLimit(level));
+            userPetEntity.setHungerNumLimit(CommonUtils.getHungerLimit(level));
+            userPetEntity.setCleanNumLimit(CommonUtils.getCleanLimit(level));
+            userPetEntity.setMoodNumLimit(CommonUtils.getMoodLimit(level));
+        }
+
+    }
+
+    /**
+     * @throws
+     * @title 答一道题，涨的宠物币
+     * @description
+     * @author chenguoku
+     * @updateTime 2019/11/11 11:36
+     */
+    public static Integer getQuestionPetCurrency() {
+        return 10;
+    }
+
+    /**
+     * @throws
+     * @title 答一道题，涨的经验
+     * @description
+     * @author chenguoku
+     * @updateTime 2019/11/11 11:36
+     */
+    public static Integer getQuestionExperience() {
+        return 10;
+    }
 
     /**
      * 涨经验的算法

@@ -1,6 +1,7 @@
 package com.chaoku.modules.app.controller.question;
 
 import com.chaoku.common.utils.Result;
+import com.chaoku.modules.app.dto.question.QuestionConfirmDto;
 import com.chaoku.modules.app.dto.question.QuestionDto;
 import com.chaoku.modules.app.service.QuestionService;
 import io.swagger.annotations.Api;
@@ -28,8 +29,18 @@ public class QuestionController {
 
     @PostMapping("learn")
     @ApiOperation("获取学习的问题")
-    public Result getQuestion(@RequestBody QuestionDto dto){
+    public Result getQuestion(@RequestBody QuestionDto dto) {
         Result result = questionService.getQuestion(dto);
+        return result;
+    }
+
+    @PostMapping("learn/submit")
+    @ApiOperation("提交问题的答案")
+    public Result submitQuestion(@RequestBody QuestionConfirmDto dto) {
+        if (!dto.getRight()){
+            return new Result().error("回答错误！");
+        }
+        Result result = questionService.submitQuestion(dto);
         return result;
     }
 

@@ -3,6 +3,7 @@ package com.chaoku.modules.app.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chaoku.common.utils.PageUtils;
 import com.chaoku.common.utils.Result;
+import com.chaoku.modules.app.dto.question.QuestionConfirmDto;
 import com.chaoku.modules.app.dto.question.QuestionDto;
 import com.chaoku.modules.app.entity.QuestionEntity;
 
@@ -20,5 +21,7 @@ public interface QuestionService extends IService<QuestionEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     Result getQuestion(QuestionDto questionDto);
+
+    Result submitQuestion(QuestionConfirmDto dto);
 }
 
