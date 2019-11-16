@@ -14,20 +14,9 @@ public class LazyDoubleCheckSingle {
     private static boolean flag = true;
 
     private LazyDoubleCheckSingle() {
-        if (flag){
-            flag = !flag;
-        }else {
-            throw new RuntimeException("不允许重复创建实例");
-        }
-
-
-//        if (single != null){
-//            throw new RuntimeException("不允许重复创建实例");
-//        }
     }
 
     public static LazyDoubleCheckSingle getInstance() {
-
         if (single == null) {
             synchronized (LazyDoubleCheckSingle.class) {
                 if (single == null) {
@@ -35,7 +24,6 @@ public class LazyDoubleCheckSingle {
                 }
             }
         }
-
         return single;
     }
 }

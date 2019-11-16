@@ -1,8 +1,6 @@
 package com.hh.single.register;
 
-import java.io.Serializable;
-
-public enum EnumSingle implements Serializable {
+public enum EnumSingle {
     INSTANCE;
 
     private Object data;

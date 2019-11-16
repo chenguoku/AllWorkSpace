@@ -1,6 +1,6 @@
 package com.hh.test;
 
-import com.hh.single.lazy.LazySingle;
+import com.hh.single.ThreadLocal.ThreadLocalSingle;
 
 /**
  * @author chenguoku
@@ -12,7 +12,9 @@ import com.hh.single.lazy.LazySingle;
 public class ExceutorThread implements Runnable {
     @Override
     public void run() {
-        LazySingle instance = LazySingle.getInstance();
+//        LazySingle instance = LazySingle.getInstance();
+//        System.out.println(Thread.currentThread().getName() + ":" + instance);
+        ThreadLocalSingle instance = ThreadLocalSingle.getInstance();
         System.out.println(Thread.currentThread().getName() + ":" + instance);
     }
 }
