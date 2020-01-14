@@ -1,56 +1,42 @@
 package com.hh.dome.test;
-import java.util.Stack;
-import java.util.Arrays;
-public class Solution {
-/*借用辅助栈存储min的大小，自定义了栈结构
-*/
-    private int size;
-    private int min = Integer.MAX_VALUE;
-    private Stack<Integer> minStack = new Stack<Integer>();
-    private Integer[] elements = new Integer[10];
-    public void push(int node) {
-        ensureCapacity(size+1);
-        elements[size++] = node;
-        if(node <= min){
-            minStack.push(node);
-            min = minStack.peek();
-        }else{
-            minStack.push(min);
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+class Solution {
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        int ans = 0, i = 0, j = 0;
+        while (i < n && j < n) {
+            if (!set.contains(s.charAt(j))) {
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
+            } else {
+                set.remove(s.charAt(i++));
+            }
         }
-    //    System.out.println(min+"");
+        return ans;
     }
- 
-    private void ensureCapacity(int size) {
-        // TODO Auto-generated method stub
-        int len = elements.length;
-        if(size > len){
-            int newLen = (len*3)/2+1; //每次扩容方式
-            elements = Arrays.copyOf(elements, newLen);
+
+    public static int lengthOfLongestSubstring1(String s) {
+        int n = s.length(), ans = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int j = 0, i = 0; j < n; j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(map.get(s.charAt(j)), i);
+            }
+            ans = Math.max(ans, j - i + 1);
+            map.put(s.charAt(j), j + 1);
         }
+        return ans;
     }
-    public void pop() {
-        Integer top = top();
-        if(top != null){
-            elements[size-1] = (Integer) null;
-        }
-        size--;
-        minStack.pop();    
-        min = minStack.peek();
-    //    System.out.println(min+"");
-    }
- 
-    public int top() {
-        if(!empty()){
-            if(size-1>=0)
-                return elements[size-1];
-        }
-        return (Integer) null;
-    }
-    public boolean empty(){
-        return size == 0;
-    }
- 
-    public int min() {
-        return min;
+
+    public static void main(String[] args) {
+        String string = "abcdbefgbh";
+        int i = lengthOfLongestSubstring1(string);
+        System.out.println(i);
     }
 }
