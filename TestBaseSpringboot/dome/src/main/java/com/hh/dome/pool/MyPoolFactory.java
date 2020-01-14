@@ -18,10 +18,10 @@ public class MyPoolFactory extends BasePooledObjectFactory<LookHomeResultVo> {
     public synchronized static GenericObjectPool<LookHomeResultVo> getInstance() {
         if (pool == null) {
             GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-            poolConfig.setMaxIdle(20);
-            poolConfig.setMaxTotal(100);
-            poolConfig.setMinIdle(10);
-            poolConfig.setLifo(false);
+            poolConfig.setMaxIdle(20);      // 设置池 空闲对象最大值 , -1 不限制大小
+            poolConfig.setMaxTotal(100);    // 设置池 总大小 , -1 不限制大小
+            poolConfig.setMinIdle(10);      // 设置池 空闲对象最小值, -1 不限制大小
+            poolConfig.setLifo(false);      // 后进先出（Last In First Out）
             pool = new GenericObjectPool<LookHomeResultVo>(new MyPoolFactory(), poolConfig);
         }
         return pool;
