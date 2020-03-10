@@ -4,30 +4,7 @@
     <list default="true" id="3c2ad01a-d0bb-46db-b6fe-21aa380efa7c" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../../../TestBaseSpringboot/dome/src/main/java/com/hh/dome/algorithm/MyQueue.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../../TestBaseSpringboot/dome/src/main/java/com/hh/dome/algorithm/MyQueueTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/cglib/Boy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/cglib/CglibMeipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/cglib/CglibProxyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/jdk/Girl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/jdk/JDKMeipo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/jdk/JDKProxyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/staticproxy/Father.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/staticproxy/Son.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/hh/proxy/staticproxy/StaticProxyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/cglib/LiSi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/cglib/MeiPo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/cglib/TestCglib.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/custom/HHClassLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/custom/HHInvocationHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/custom/HHMeipo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/custom/HHProxy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/custom/TestFindLove.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/jdk/Meipo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/jdk/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/jdk/TestFindLove.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hh/proxy/jdk/ZhangSan.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,7 +47,7 @@
     <session id="1495846040">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.opened" value="2" />
         </counts>
@@ -89,12 +66,13 @@
         <counts>
           <entry key="dummy" value="8" />
           <entry key="java" value="663" />
+          <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="663" />
-          <entry key="PLAIN_TEXT" value="8" />
+          <entry key="PLAIN_TEXT" value="14" />
         </counts>
       </usages-collector>
     </session>
@@ -166,7 +144,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/hh/proxy/cglib/CglibProxyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
+            <state relative-caret-position="225">
               <caret line="9" selection-start-line="9" selection-end-line="16" selection-end-column="1" />
             </state>
           </provider>
@@ -270,7 +248,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574584406897" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574605827305" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -377,12 +355,20 @@
       <workItem from="1550455668322" duration="496000" />
       <workItem from="1550461544733" duration="2141000" />
       <workItem from="1574265323282" duration="4981000" />
-      <workItem from="1574583676797" duration="1305000" />
+      <workItem from="1574583676797" duration="1354000" />
     </task>
+    <task id="LOCAL-00001" summary="重写代理模式">
+      <created>1574605809476</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574605809476</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8923000" />
+    <option name="totallyTimeSpent" value="8972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -397,7 +383,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32892805" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.42143905" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.34361234" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34361234" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -423,6 +409,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="重写代理模式" />
+    <option name="LAST_COMMIT_MESSAGE" value="重写代理模式" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/reflect/Method.java">
@@ -534,7 +524,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hh/proxy/cglib/CglibProxyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
+        <state relative-caret-position="225">
           <caret line="9" selection-start-line="9" selection-end-line="16" selection-end-column="1" />
         </state>
       </provider>
