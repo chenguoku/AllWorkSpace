@@ -7,7 +7,7 @@ import org.junit.Test;
 public class Main {
 
 //	@Test
-//	public void test() {
+//	public void Test() {
 //		int a = 8%3;
 //		System.out.println(a);
 //	}
@@ -365,7 +365,7 @@ public class Main {
 //    }
 //	
 //	@Test
-//	public void test() {
+//	public void Test() {
 //		Queue<Integer> queue = new LinkedList<>();
 //		queue.add(1);
 //		queue.add(2);

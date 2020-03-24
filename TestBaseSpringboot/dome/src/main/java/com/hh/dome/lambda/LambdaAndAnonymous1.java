@@ -63,7 +63,7 @@ public class LambdaAndAnonymous1 {
      * @return void
      **/
     public void testThree(){
-        String str = "test haha";
+        String str = "Test haha";
         TestClassOne<String> one = x -> System.out.println(x);
         one.test(str);
     }

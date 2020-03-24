@@ -39,7 +39,7 @@ public class TestCyclicBarrier {
 		try {
 			cyclicBarrier.await();
 		} catch (Exception e) {
-			System.out.println("test e Exception");
+			System.out.println("Test e Exception");
 		}
 		System.out.println("threadnum"+threadNum+"完成");
 	}
