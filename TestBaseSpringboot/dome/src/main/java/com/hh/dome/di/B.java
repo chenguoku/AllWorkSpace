@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @createTime 2020年02月05日 11:18:00
  */
 @Service
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class B {
 
     @Autowired

@@ -17,7 +17,7 @@
 
 ## maven：maven使用及maven插件编写
 
-## mybatis：mybatis 的使用
+## mybatis：mybatis 的使用及代码自动生成
 
 ## rabbitMq：rabbitMq的使用demo
 
