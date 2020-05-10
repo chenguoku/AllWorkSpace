@@ -1,4 +1,4 @@
-package com.hh.dome.regex;
+package com.hh.dome.pattern;
 
 import org.junit.Test;
 

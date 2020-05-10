@@ -57,6 +57,7 @@ public class RestTemplateTestController {
 //        String s = externalRestTemplate.postForObject("http://127.0.0.1:8081/restTemplate/post?a={a}&b={b}", null, String.class, requset);
 
 ////////////////////////////////////exchange()////////////////////////////////////////////
+/////////////////////////exchange 第一种/////////////////////////////////////
 //        Map<String, String> requset = new HashMap<>();
 //        requset.put("a", "1");
 //        requset.put("b", "2");
@@ -70,7 +71,7 @@ public class RestTemplateTestController {
 //        ResponseEntity<String> exchange = externalRestTemplate.exchange("http://127.0.0.1:8081/restTemplate/post", HttpMethod.POST, requestEntity, String.class);
 //        String body = exchange.getBody();
 
-
+/////////////////////////exchange 第二种/////////////////////////////////////
 //        Map<String, String> requset = new HashMap<>();
 //        requset.put("a", "1");
 //        requset.put("b", "2");
@@ -86,6 +87,7 @@ public class RestTemplateTestController {
 //        ResponseEntity<String> exchange = externalRestTemplate.exchange(requestEntity,String.class);
 //        String body = exchange.getBody();
 
+/////////////////////////////////返回结果的一个List///////////////////////////////////////////
         String url = "http://127.0.0.1:8081/restTemplate/get" + "/getall";
         ParameterizedTypeReference<List<Map>> parameterizedTypeReference = new ParameterizedTypeReference<List<Map>>() {
         };
