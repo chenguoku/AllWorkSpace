@@ -5,29 +5,29 @@
 >
 > 算法及数据结构
 >
-> swagger的使用及配置
+> Swagger的使用及配置
 >
 > 锁
 >
-> restTemplate的详细使用
+> RestTemplate的详细使用
 >
-> mapstruct的使用
+> MapStruct的使用
 >
-> lambda表达式的使用
+> Lambda表达式的使用
 
-## designMode：设计模式Demo
+## DesignMode：设计模式Demo
 
-## maven：maven使用及maven插件编写
+## Maven：Maven使用及Maven插件编写
 
-## mybatis：mybatis 的使用及代码自动生成
+## MyBatis：MyBatis的使用及代码自动生成
 
-## rabbitMq：rabbitMq的使用demo
+## RabbitMQ：RabbitMQ的使用demo
 
-## springboot_security：Spring中的认证
+## Spring Boot Security：Spring中的认证
 
 ##  Hibernate-Validator 注解验证
 
-## imagetool：图片转换工具
+## Image Tool：图片转换工具
 
 
 
