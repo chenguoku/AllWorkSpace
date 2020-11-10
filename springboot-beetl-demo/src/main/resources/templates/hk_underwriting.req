@@ -1,0 +1,28 @@
+{
+    "channelCode": ${p.channelCode},
+    "holderInfo": {
+        "name":${p.holderInfo.name},
+        "idType":${p.holderInfo.idType},
+        "idNo":${p.holderInfo.idNo}
+    },
+    "insuredInfos": [
+    <%
+        for(insuredInfo in p.insuredInfos){
+    %>
+            {
+                "relation":${insuredInfo.relation},
+                "name":${insuredInfo.name},
+                "idType":${insuredInfo.idType},
+                "idNo":${insuredInfo.idNo}
+            }
+    <%
+        }
+    %>
+    ],
+    "orderInfo": {
+        "orderNo": ${p.orderInfo.orderNo},
+        "productCode":${p.orderInfo.productCode},
+        "totalPremium":${p.orderInfo.totalPremium},
+        "totalAmount":${p.orderInfo.totalAmount}
+    }
+}
